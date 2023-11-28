@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:layout_margin="20dp"
+    android:orientation="vertical"
+    tools:context=".SignIn"
+    android:background="@drawable/ic_launcher_background_wave_up">
+
+    <ImageView
+        android:id="@+id/main_IMV_appLogo"
+        android:layout_width="145dp"
+        android:layout_height="145dp"
+        android:src="@drawable/b"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="50dp"/>
+
+    <EditText
+        android:id="@+id/signIN_LBL_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email: "
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:textColorHint="@color/text_black"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/edit_text"
+       />
+
+    <EditText
+        android:id="@+id/signIN_LBL_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password: "
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:textColorHint="@color/text_black"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edit_text"
+        android:inputType="textWebPassword"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/signIn_login_BTN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="Login"
+        app:cornerRadius="5dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/primary_color"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/signIn_LBL_loginQ"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dont have an account?"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/secondary_color"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/signIn_BTN_forgotPassword"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="Forgot password?"
+            app:cornerRadius="5dp"
+            android:backgroundTint="@color/primary_color"
+            android:layout_marginTop="15dp"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/signIn_BTN_SignUp"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="30dp"
+            android:backgroundTint="@color/primary_color"
+            android:text="Sign Up"
+            app:cornerRadius="5dp"
+            android:textAllCaps="false" />
+    </LinearLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_launcher_background_wave_down"
+        ></ImageView>
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:background="@drawable/ic_launcher_background_wave_up"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".SignUp">
+
+    <ImageView
+        android:id="@+id/signUp_IMV_appLogo"
+        android:layout_width="145dp"
+        android:layout_height="150dp"
+        android:layout_margin="5dp"
+        android:src="@drawable/user" />
+
+    <EditText
+        android:id="@+id/signUp_LBL_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Username"
+        android:textColorHint="@color/text_black"
+        android:textSize="20sp"
+        android:background="@drawable/edit_text"
+        android:padding="10dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="50dp"/>
+
+    <EditText
+        android:id="@+id/signUp_LBL_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email "
+        android:textColorHint="@color/text_black"
+        android:textSize="20sp"
+        android:background="@drawable/edit_text"
+        android:padding="10dp"
+        android:layout_marginBottom="15dp"/>
+
+    <EditText
+        android:id="@+id/signUp_LBL_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:textColorHint="@color/text_black"
+        android:textSize="20sp"
+        android:inputType="textWebPassword"
+        android:background="@drawable/edit_text"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/signUp_BTN_uploadImg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:backgroundTint="@color/primary_color"
+        app:cornerRadius="5dp"
+        android:text="Upload Profile Picture"
+        android:textAllCaps="false" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/signUp_BTN_signUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:backgroundTint="@color/primary_color"
+        android:text="Sign Up"
+        app:cornerRadius="5dp"
+        android:textAllCaps="false" />
+
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/signUp_LBL_loginQ"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:text="Have an account?"
+        android:textColor="@color/secondary_color"
+        android:textStyle="bold" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/signUp_BTN_Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/primary_color"
+        android:text="Login"
+        app:cornerRadius="5dp"
+        android:textAllCaps="false" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@drawable/ic_launcher_background_wave_down"></ImageView>
+
+
+</LinearLayout>
