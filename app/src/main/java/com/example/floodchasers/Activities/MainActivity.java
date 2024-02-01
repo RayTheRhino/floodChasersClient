@@ -52,11 +52,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void DataFromET() {
-        // Initialize EditText fields
-        signUp_LBL_name = findViewById(R.id.signUp_LBL_name);
-        signUp_LBL_email = findViewById(R.id.signUp_LBL_email);
-        signUp_LBL_password = findViewById(R.id.signUp_LBL_password);
-
         String username = signUp_LBL_name.getText().toString();
         String email = signUp_LBL_email.getText().toString();
         String password = signUp_LBL_password.getText().toString();
