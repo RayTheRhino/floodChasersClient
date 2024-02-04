@@ -7,7 +7,7 @@
     android:layout_gravity="center"
     android:layout_margin="20dp"
     android:orientation="vertical"
-    tools:context=".Activities.MainActivity"
+    tools:context=".Activities.SignUpActivity"
     android:background="@drawable/ic_launcher_background_wave_up">
 
     <!-- Header: User Profile Picture and Name -->

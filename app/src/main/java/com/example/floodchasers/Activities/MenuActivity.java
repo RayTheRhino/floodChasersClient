@@ -1,4 +1,4 @@
-package com.example.floodchasers;
+package com.example.floodchasers.Activities;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.floodchasers.Api.MenuApi;
 import com.example.floodchasers.Api.UserApi;
+import com.example.floodchasers.R;
 import com.google.android.material.textview.MaterialTextView;
 
 import retrofit2.Call;
