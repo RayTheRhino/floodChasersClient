@@ -1,5 +1,6 @@
 package com.example.floodchasers.Api;
 
+import com.example.floodchasers.Objects.User;
 import com.example.floodchasers.SignUp;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -20,7 +21,7 @@ public interface UserApi {
     Call<Void> CreateNewUser(@Field("JsonData") String signUpData, @Field("Image") byte[] image);
 
     @GET("Users/GetUserById")
-    Call<JsonObject>getUserById(@Query("userId") String userId);
+    Call<User>getUserById(@Query("userId") String userId);
 
     @GET("Users/GetAllUsers")
     Call<JsonArray> getAllUsers();
@@ -33,4 +34,7 @@ public interface UserApi {
 
     @DELETE("Users/DeleteAllUsers")
     Call<Void> deleteAllUsers();
+
+    @GET("Users/Login")
+    Call<User>LoggedInUser(@Query("email") String email, @Query("password")String password);
 }

@@ -1,8 +1,11 @@
 package com.example.floodchasers.Activities;
 
+import static com.example.floodchasers.Objects.AppConfig.SERVER_URL;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -10,6 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.floodchasers.Api.UserApi;
+import com.example.floodchasers.Objects.User;
 import com.example.floodchasers.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textview.MaterialTextView;
@@ -29,7 +33,7 @@ public class SignInActivity extends AppCompatActivity {
     private MaterialTextView signIn_LBL_loginQ;
 
     private Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("http://10.0.0.18:5094/")
+            .baseUrl(SERVER_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build();
     private UserApi userApi;
@@ -41,38 +45,56 @@ public class SignInActivity extends AppCompatActivity {
         findViews();
 
         userApi = retrofit.create(UserApi.class);
+        onClick();
     }
 
-    private void callBackinfo(String signUpData) {
-        Call<JsonObject> call = userApi.getUserById("yourUserId");
-
-        call.enqueue(new Callback<JsonObject>() {
+    private void onClick() {
+        signIn_login_BTN.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                if (response.isSuccessful()) {
-                    JsonObject userJson = response.body();
+            public void onClick(View view) {
+                String currentEmail = signIN_LBL_email.getText().toString();
+                String currentPassword = signIN_LBL_password.getText().toString();
+                callBackinfo(currentEmail, currentPassword);
 
-                    String userId = userJson.get("userId").getAsString();
-                    String email = userJson.get("email").getAsString();
-                    String userName = userJson.get("userName").getAsString();
+            }
+        });
 
-                    if (!response.isSuccessful()) {
-                        Toast.makeText(SignInActivity.this, "Error!", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(SignInActivity.this, "User Logged In successfully", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(SignInActivity.this, MenuActivity.class);
-                        startActivity(intent);
-                    }
+        signIn_BTN_SignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+
+    private void callBackinfo(String email, String password) {
+        Call<User> call = userApi.LoggedInUser(email, password);
+
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if(!response.isSuccessful()){
+
+                    Toast.makeText(SignInActivity.this, "Error!", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(SignInActivity.this, "User signed In successfully", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(SignInActivity.this, MenuActivity.class);
+                    startActivity(intent);
                 }
             }
 
             @Override
-            public void onFailure(Call<JsonObject> call, Throwable t) {
-                t.printStackTrace();
-                Log.e("API_ERROR", "Request failed: " + t.getMessage());
-                Toast.makeText(SignInActivity.this, "Req failed!", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<User> call, Throwable throwable) {
+                Log.e("LoggedInUser", "onFailure: ",throwable );
+                Toast.makeText(SignInActivity.this, "Email or password incorrect!", Toast.LENGTH_LONG).show();
+
             }
         });
+
+
     }
 
     private void findViews() {

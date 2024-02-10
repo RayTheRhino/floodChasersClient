@@ -1,5 +1,7 @@
 package com.example.floodchasers.Activities;
 
+import static com.example.floodchasers.Objects.AppConfig.SERVER_URL;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -23,10 +25,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SignUpActivity extends AppCompatActivity {
     private EditText signUp_LBL_name,signUp_LBL_password, signUp_LBL_email;
-    private MaterialButton signUp_BTN_signUp;
+    private MaterialButton signUp_BTN_signUp,signUp_BTN_Login,signUp_BTN_uploadImg;
 
     private Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("http://10.0.0.18:5094/")
+            .baseUrl(SERVER_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build();
     private UserApi userApi;
@@ -38,7 +40,12 @@ public class SignUpActivity extends AppCompatActivity {
         findViews();
 
         userApi = retrofit.create(UserApi.class);
+        onClick();
 
+
+    }
+
+    private void onClick() {
         signUp_BTN_signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,6 +54,14 @@ public class SignUpActivity extends AppCompatActivity {
 
             }
         });
+        signUp_BTN_Login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 
@@ -99,6 +114,7 @@ public class SignUpActivity extends AppCompatActivity {
         signUp_LBL_name = findViewById(R.id.signUp_LBL_name);
         signUp_LBL_email = findViewById(R.id.signUp_LBL_email);
         signUp_BTN_signUp= findViewById(R.id.signUp_BTN_signUp);
-
+        signUp_BTN_Login = findViewById(R.id.signUp_BTN_Login);
+        signUp_BTN_uploadImg = findViewById(R.id.signUp_BTN_uploadImg);
     }
 }
