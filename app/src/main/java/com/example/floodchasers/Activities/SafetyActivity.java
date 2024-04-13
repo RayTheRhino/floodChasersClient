@@ -1,52 +1,46 @@
 package com.example.floodchasers.Activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.floodchasers.Api.MenuApi;
-import com.example.floodchasers.Api.UserApi;
 import com.example.floodchasers.R;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textview.MaterialTextView;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
-public class MenuActivity extends AppCompatActivity {
-
-
-    private TextView username;
-    private ImageView settings;
-    private MaterialTextView home, forums, alerts,safety, profile;
-    private Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("http://My-IP:3001/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build();
-    private MenuApi menuApi;
+public class SafetyActivity extends AppCompatActivity {
+    private TextView username, TV_Em_response_hub;
+    private ImageView settings, settings_IMV_Logo;
+    private MaterialButton BTN_safety_inst,BTN_curr_loc,BTN_emergency_num;
+    private MaterialTextView home,forums,alerts,safety,profile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_safety);
         findViews();
-        menuApi = retrofit.create(MenuApi.class);
         barListeners();
+        onClick();
+    }
+
+    private void onClick() {
+        BTN_emergency_num.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SafetyActivity.this, EmergencyNumbersActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void barListeners() {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this,MainActivity.class));
+                startActivity(new Intent(SafetyActivity.this,MainActivity.class));
             }
         });
 //        forums.setOnClickListener(new View.OnClickListener() {
@@ -64,21 +58,27 @@ public class MenuActivity extends AppCompatActivity {
         safety.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this, SafetyActivity.class));
+                startActivity(new Intent(SafetyActivity.this, SafetyActivity.class));
             }
         });
-        profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this, EmergencyNumbersActivity.class));
-            }
-        });
+//        profile.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(EmergencyNumbersActivity.this,);
+//            }
+//        });
     }
 
-
     private void findViews() {
-        username = findViewById(R.id.username);
+        TV_Em_response_hub = findViewById(R.id.TV_Em_response_hub);
+        settings_IMV_Logo = findViewById(R.id.settings_IMV_Logo);
+        BTN_safety_inst = findViewById(R.id.BTN_safety_inst);
+        BTN_curr_loc = findViewById(R.id.BTN_curr_loc);
+        BTN_emergency_num = findViewById(R.id.BTN_emergency_num);
+
+        //header and footer BTNs
         settings = findViewById(R.id.settings);
+        username= findViewById(R.id.username);
         home = findViewById(R.id.home);
         forums = findViewById(R.id.forums);
         alerts = findViewById(R.id.alerts);

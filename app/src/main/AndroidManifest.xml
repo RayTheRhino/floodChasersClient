@@ -31,6 +31,12 @@
         </activity>
         <activity android:name=".Activities.SignUpActivity">
         </activity>
+        <activity android:name=".Activities.EmergencyNumbersActivity">
+        </activity>
+        <activity android:name=".Activities.EmergencyInfoActivity">
+        </activity>
+        <activity android:name=".Activities.SafetyActivity">
+        </activity>
 
 
     </application>
