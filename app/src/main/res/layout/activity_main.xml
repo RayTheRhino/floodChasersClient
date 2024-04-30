@@ -7,7 +7,7 @@
     android:layout_gravity="center"
     android:layout_margin="20dp"
     android:orientation="vertical"
-    tools:context=".Activities.SignUpActivity"
+    tools:context=".Activities.MainActivity"
     android:background="@drawable/ic_launcher_background_wave_up">
 
     <!-- Header: User Profile Picture and Name -->
@@ -37,40 +37,24 @@
             android:src="@drawable/cogwheel" />
     </LinearLayout>
 
-    <!-- Post Content -->
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="This is a sample post content. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         android:padding="16dp" />
 
-    <!-- Post Image -->
-<!--    <ImageView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="280dp"-->
-<!--        android:scaleType="centerCrop"-->
-<!--        android:src="@drawable/sample_post_image" />-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:orientation="horizontal">
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rv_newslist">
 
-    <!-- Like, Comment, and Share Buttons -->
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="200dp"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:gravity="center_vertical">-->
-<!--        <ImageView-->
-<!--            android:layout_width="32dp"-->
-<!--            android:layout_height="32dp"-->
-<!--            android:src="@drawable/ic_like" />-->
-<!--        <ImageView-->
-<!--            android:layout_width="32dp"-->
-<!--            android:layout_height="32dp"-->
-<!--            android:src="@drawable/ic_comment" />-->
-<!--        <ImageView-->
-<!--            android:layout_width="32dp"-->
-<!--            android:layout_height="32dp"-->
-<!--            android:src="@drawable/ic_share" />-->
-<!--    </LinearLayout>-->
-
+        </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -42,7 +42,10 @@
         android:text="Forums"
         android:textSize="30dp"
         android:textAlignment="center"/>
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/Tv_forum_topic"/>
     <!--Forum topics -->
     <LinearLayout
         android:layout_width="match_parent"

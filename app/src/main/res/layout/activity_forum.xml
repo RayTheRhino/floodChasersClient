@@ -7,7 +7,7 @@
     android:layout_gravity="center"
     android:layout_margin="20dp"
     android:orientation="vertical"
-    tools:context=".Activities.SignUpActivity"
+    tools:context=".Activities.ForumActivity"
     android:background="@drawable/ic_launcher_background_wave_up">
 
     <!-- Header: User Profile Picture and Name -->
@@ -15,10 +15,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-<!--        <ImageView-->
-<!--            android:layout_width="48dp"-->
-<!--            android:layout_height="48dp"-->
-<!--            android:src="@drawable/user_profile_picture" />-->
+        <!--        <ImageView-->
+        <!--            android:layout_width="48dp"-->
+        <!--            android:layout_height="48dp"-->
+        <!--            android:src="@drawable/user_profile_picture" />-->
         <TextView
             android:layout_width="250dp"
             android:layout_height="wrap_content"
@@ -30,45 +30,36 @@
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="5dp"
             android:src="@drawable/cogwheel" />
     </LinearLayout>
 
-    <!-- Post Content -->
-    <TextView
+    <!--Title -->
+    <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="This is a sample post content. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-        android:padding="16dp" />
+        android:text="Forums"
+        android:textSize="30dp"
+        android:textAlignment="center"/>
 
-    <!-- Post Image -->
-<!--    <ImageView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="280dp"-->
-<!--        android:scaleType="centerCrop"-->
-<!--        android:src="@drawable/sample_post_image" />-->
+    <!--Forum topics -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:background="@drawable/edit_text"
+        android:layout_marginBottom="10dp">
 
-    <!-- Like, Comment, and Share Buttons -->
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="200dp"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:gravity="center_vertical">-->
-<!--        <ImageView-->
-<!--            android:layout_width="32dp"-->
-<!--            android:layout_height="32dp"-->
-<!--            android:src="@drawable/ic_like" />-->
-<!--        <ImageView-->
-<!--            android:layout_width="32dp"-->
-<!--            android:layout_height="32dp"-->
-<!--            android:src="@drawable/ic_comment" />-->
-<!--        <ImageView-->
-<!--            android:layout_width="32dp"-->
-<!--            android:layout_height="32dp"-->
-<!--            android:src="@drawable/ic_share" />-->
-<!--    </LinearLayout>-->
+        <!--            tools:listitem="@layout/card_layout_thread" need to be inside-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/RV_forum"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:layout_margin="5dp"
+            />
+    </LinearLayout>
 
+    <!--The Navbar-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -91,7 +82,8 @@
             android:layout_weight="1"
             android:textSize="16sp"
             android:text="Forums"
-            >
+            android:textColor="@color/primary_color"
+            android:textStyle="bold">
         </com.google.android.material.textview.MaterialTextView>
 
         <com.google.android.material.textview.MaterialTextView
@@ -99,8 +91,7 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:layout_weight="1"
-            android:text="Alerts"
-            >
+            android:text="Alerts">
         </com.google.android.material.textview.MaterialTextView>
 
         <com.google.android.material.textview.MaterialTextView
@@ -109,9 +100,7 @@
             android:textAlignment="center"
             android:layout_weight="1"
             android:textSize="16sp"
-            android:text="Safety"
-            android:textColor="@color/primary_color"
-            android:textStyle="bold">
+            android:text="Safety">
         </com.google.android.material.textview.MaterialTextView>
 
         <com.google.android.material.textview.MaterialTextView
