@@ -24,7 +24,7 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:text="John Doe"
-            android:textSize="16sp"
+            android:textSize="16sp" 
             android:layout_gravity="center_vertical"
             android:layout_marginStart="16dp" />
 
@@ -55,66 +55,11 @@
 
         </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
-    <LinearLayout
+
+    <com.example.floodchasers.Views.Footer
+        android:id="@+id/footerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/home"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            android:textSize="16sp"
-            android:text="Home"
-            android:textColor="@color/primary_color"
-            android:textStyle="bold">
-        </com.google.android.material.textview.MaterialTextView>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/forums"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_weight="1"
-            android:textSize="16sp"
-            android:text="Forums">
-        </com.google.android.material.textview.MaterialTextView>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/alerts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_weight="1"
-            android:text="Alerts">
-        </com.google.android.material.textview.MaterialTextView>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/safety"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_weight="1"
-            android:textSize="16sp"
-            android:text="Safety">
-        </com.google.android.material.textview.MaterialTextView>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_weight="1"
-            android:textSize="16sp"
-            android:text="Profile">
-        </com.google.android.material.textview.MaterialTextView>
-    </LinearLayout>
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="@drawable/ic_launcher_background_wave_down"></ImageView>
+        android:layout_alignParentBottom="true"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

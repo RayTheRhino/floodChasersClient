@@ -9,14 +9,14 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.floodchasers.R;
+import com.example.floodchasers.Views.Footer;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.textview.MaterialTextView;
 
 public class SafetyActivity extends AppCompatActivity {
     private TextView username, TV_Em_response_hub;
     private ImageView settings, settings_IMV_Logo;
     private MaterialButton BTN_safety_inst,BTN_curr_loc,BTN_emergency_num;
-    private MaterialTextView home,forums,alerts,safety,profile;
+    private Footer footerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +24,7 @@ public class SafetyActivity extends AppCompatActivity {
         findViews();
         barListeners();
         onClick();
+        footerView.updateTextColor(footerView.getSafety());
     }
 
     private void onClick() {
@@ -37,36 +38,21 @@ public class SafetyActivity extends AppCompatActivity {
     }
 
     private void barListeners() {
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(SafetyActivity.this,MainActivity.class));
-            }
-        });
-//        forums.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(EmergencyNumbersActivity.this,));
-//            }
-//        });
-//        alerts.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(EmergencyNumbersActivity.this,);
-//            }
-//        });
-        safety.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(SafetyActivity.this, SafetyActivity.class));
-            }
-        });
-//        profile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(EmergencyNumbersActivity.this,);
-//            }
-//        });
+        footerView.setHomeButtonClickListener(v ->
+                startActivity(new Intent(SafetyActivity.this, MainActivity.class))
+        );
+
+        footerView.setForumsButtonClickListener(v ->
+                startActivity(new Intent(SafetyActivity.this, ForumActivity.class))
+        );
+
+        footerView.setSafetyButtonClickListener(v ->
+                startActivity(new Intent(SafetyActivity.this, SafetyActivity.class))
+        );
+
+        footerView.setAlertsButtonClickListener(v ->
+                startActivity(new Intent(SafetyActivity.this, AlertsActivity.class))
+        );
     }
 
     private void findViews() {
@@ -79,10 +65,6 @@ public class SafetyActivity extends AppCompatActivity {
         //header and footer BTNs
         settings = findViewById(R.id.settings);
         username= findViewById(R.id.username);
-        home = findViewById(R.id.home);
-        forums = findViewById(R.id.forums);
-        alerts = findViewById(R.id.alerts);
-        safety = findViewById(R.id.safety);
-        profile = findViewById(R.id.profile);
+        footerView = findViewById(R.id.footerView);
     }
 }

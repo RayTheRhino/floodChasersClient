@@ -37,6 +37,8 @@
         </activity>
         <activity android:name=".Activities.SafetyActivity">
         </activity>
+        <activity android:name=".Activities.AlertsActivity">
+        </activity>
 
 
     </application>
