@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">FloodChasers</string>
+    <string name="john_doe">John Doe</string>
+    <string name="flood_alerts">Flood Alerts</string>
+    <string name="this_is_a_sample_post_content_lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit">This is a sample post content. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
+    <string name="home">Home</string>
+    <string name="forums">Forums</string>
+    <string name="alerts">Alerts</string>
+    <string name="safety">Safety</string>
+    <string name="profile">Profile</string>
+    <string name="wave_down">wave down</string>
 </resources>

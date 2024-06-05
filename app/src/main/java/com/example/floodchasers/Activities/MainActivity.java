@@ -19,6 +19,7 @@ import com.example.floodchasers.Adapter.ArticlesAdapter;
 import com.example.floodchasers.Api.LearnApi;
 import com.example.floodchasers.Boundaries.LearnBoundary;
 import com.example.floodchasers.R;
+import com.example.floodchasers.Views.Footer;
 import com.google.android.material.textview.MaterialTextView;
 
 import java.util.ArrayList;
@@ -34,10 +35,10 @@ public class MainActivity  extends AppCompatActivity {
 
     private TextView username;
     private ImageView settings;
-    private MaterialTextView home, forums, alerts,safety, profile;
     private RecyclerView rv_newslist;
     private ArticlesAdapter articlesAdapter;
     private ArrayList<LearnBoundary> learnBoundaries;
+    private Footer footerView;
     private Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(SERVER_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -49,6 +50,7 @@ public class MainActivity  extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         findViews();
         barListeners();
+        footerView.updateTextColor(footerView.getHome());
 
         learnBoundaries = new ArrayList<LearnBoundary>();
         rv_newslist.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -82,49 +84,23 @@ public class MainActivity  extends AppCompatActivity {
     }
 
     private void barListeners() {
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,MainActivity.class));
-            }
-        });
-        forums.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, ForumActivity.class));
-            }
-        });
-//        alerts.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(EmergencyNumbersActivity.this,);
-//            }
-//        });
-        safety.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, SafetyActivity.class));
-            }
-        });
-//        profile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(EmergencyNumbersActivity.this,);
-//            }
-//        });
+        footerView.setHomeButtonClickListener(view ->
+                startActivity(new Intent(MainActivity.this,MainActivity.class))
+        );
+        footerView.setForumsButtonClickListener(view ->
+                startActivity(new Intent(MainActivity.this, ForumActivity.class))
+        );
+        footerView.setSafetyButtonClickListener(view ->
+                startActivity(new Intent(MainActivity.this, SafetyActivity.class))
+        );
+        footerView.setAlertsButtonClickListener(view ->
+                startActivity(new Intent(MainActivity.this, AlertsActivity.class))
+        );
     }
-
-
     private void findViews() {
         username = findViewById(R.id.username);
         settings = findViewById(R.id.settings);
-        home = findViewById(R.id.home);
-        forums = findViewById(R.id.forums);
-        alerts = findViewById(R.id.alerts);
-        safety = findViewById(R.id.safety);
-        profile = findViewById(R.id.profile);
+        footerView = findViewById(R.id.footerView);
         rv_newslist = findViewById(R.id.rv_newslist);
-
-
     }
 }

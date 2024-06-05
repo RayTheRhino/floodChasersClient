@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:layout_margin="20dp"
     android:orientation="vertical"
-    tools:context=".Activities.SignUpActivity"
     android:background="@drawable/ic_launcher_background_wave_up">
 
     <!-- Header: User Profile Picture and Name -->
@@ -15,14 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-<!--        <ImageView-->
-<!--            android:layout_width="48dp"-->
-<!--            android:layout_height="48dp"-->
-<!--            android:src="@drawable/user_profile_picture" />-->
+        <!-- <ImageView-->
+        <!--            android:layout_width="48dp"-->
+        <!--            android:layout_height="48dp"-->
+        <!--            android:src="@drawable/user_profile_picture" /> -->
         <TextView
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:text="John Doe"
+            android:text="@string/john_doe"
             android:textSize="16sp"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="16dp" />
@@ -30,102 +27,63 @@
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:src="@drawable/cogwheel" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/alertsTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/flood_alerts"
+        android:textSize="24sp"
+        android:layout_margin="16dp" />
+
+    <ListView
+        android:id="@+id/alertsListView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <!-- Post Content -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="This is a sample post content. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        android:text="@string/this_is_a_sample_post_content_lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit"
         android:padding="16dp" />
 
     <!-- Post Image -->
-<!--    <ImageView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="280dp"-->
-<!--        android:scaleType="centerCrop"-->
-<!--        android:src="@drawable/sample_post_image" />-->
+    <!--    <ImageView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="280dp"-->
+    <!--        android:scaleType="centerCrop"-->
+    <!--        android:src="@drawable/sample_post_image" />-->
 
     <!-- Like, Comment, and Share Buttons -->
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="200dp"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:gravity="center_vertical">-->
-<!--        <ImageView-->
-<!--            android:layout_width="32dp"-->
-<!--            android:layout_height="32dp"-->
-<!--            android:src="@drawable/ic_like" />-->
-<!--        <ImageView-->
-<!--            android:layout_width="32dp"-->
-<!--            android:layout_height="32dp"-->
-<!--            android:src="@drawable/ic_comment" />-->
-<!--        <ImageView-->
-<!--            android:layout_width="32dp"-->
-<!--            android:layout_height="32dp"-->
-<!--            android:src="@drawable/ic_share" />-->
-<!--    </LinearLayout>-->
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="200dp"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        android:gravity="center_vertical">-->
+    <!--        <ImageView-->
+    <!--            android:layout_width="32dp"-->
+    <!--            android:layout_height="32dp"-->
+    <!--            android:src="@drawable/ic_like" />-->
+    <!--        <ImageView-->
+    <!--            android:layout_width="32dp"-->
+    <!--            android:layout_height="32dp"-->
+    <!--            android:src="@drawable/ic_comment" />-->
+    <!--        <ImageView-->
+    <!--            android:layout_width="32dp"-->
+    <!--            android:layout_height="32dp"-->
+    <!--            android:src="@drawable/ic_share" />-->
+    <!--    </LinearLayout>-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            android:textSize="16sp"
-            android:text="Home"
-            >
-        </com.google.android.material.textview.MaterialTextView>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_weight="1"
-            android:textSize="16sp"
-            android:text="Forums"
-            >
-        </com.google.android.material.textview.MaterialTextView>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_weight="1"
-            android:text="Alerts"
-            android:textColor="@color/primary_color"
-            android:textStyle="bold">
-        </com.google.android.material.textview.MaterialTextView>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_weight="1"
-            android:textSize="16sp"
-            android:text="Safety">
-        </com.google.android.material.textview.MaterialTextView>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_weight="1"
-            android:textSize="16sp"
-            android:text="Profile">
-        </com.google.android.material.textview.MaterialTextView>
-    </LinearLayout>
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="@drawable/ic_launcher_background_wave_down"></ImageView>
+    <com.example.floodchasers.Views.Footer
+    android:id="@+id/footerView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
