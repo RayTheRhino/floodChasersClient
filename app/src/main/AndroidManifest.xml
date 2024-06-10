@@ -39,6 +39,8 @@
         </activity>
         <activity android:name=".Activities.AlertsActivity">
         </activity>
+        <activity android:name=".Activities.AlertLocationActivity">
+        </activity>
 
 
     </application>

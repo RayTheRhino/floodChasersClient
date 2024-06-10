@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        android:background="@drawable/ic_launcher_background_wave_up">
+
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal">-->
+
+
+<!--        </LinearLayout>-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:text="@string/john_doe"
+                android:textSize="16sp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="16dp" />
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/cogwheel" />
+
+            <!-- Header -->
+            <TextView
+                android:id="@+id/alertTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Location Name"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:paddingBottom="8dp" />
+
+            <!-- Subheader -->
+            <TextView
+                android:id="@+id/alertDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Severity: High | Date: YYYY-MM-DD | Time: HH:MM AM/PM | Tags: Flash Flood Warning"
+                android:textSize="16sp"
+                android:textColor="#666666"
+                android:paddingBottom="16dp" />
+
+            <!-- Description -->
+            <TextView
+                android:id="@+id/alertDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="A flood alert has been issued for your area. Heavy rainfall has caused water levels to rise rapidly in nearby rivers and streams, increasing the risk of flooding. Please take immediate precautions and follow these recommended actions:\n\n - Stay indoors and avoid traveling unless absolutely necessary.\n - If you must travel, do not attempt to drive through flooded areas.\n - Move to higher ground if you are in a low-lying area prone to flooding.\n- Secure important documents and valuables in waterproof containers.\n - Stay tuned to local news and weather updates for the latest information.\n Please stay safe and follow the advice of local authorities."
+                android:textSize="16sp"
+                android:lineSpacingMultiplier="1.2"
+                android:paddingBottom="16dp" />
+
+            <!-- Additional Information -->
+            <TextView
+                android:id="@+id/additionalInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Additional information about the alert can be displayed here. This may include affected areas, evacuation routes, emergency contact numbers, etc."
+                android:textSize="16sp"
+                android:lineSpacingMultiplier="1.2" />
+
+        </LinearLayout>
+
+
+        <com.example.floodchasers.Views.Footer
+            android:id="@+id/footerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</ScrollView>

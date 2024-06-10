@@ -38,6 +38,7 @@
         android:layout_height="wrap_content"
         android:text="@string/flood_alerts"
         android:textSize="24sp"
+        android:textStyle="bold"
         android:layout_margin="16dp" />
 
     <ListView
@@ -81,9 +82,9 @@
     <!--    </LinearLayout>-->
 
     <com.example.floodchasers.Views.Footer
-    android:id="@+id/footerView"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true"/>
+        android:id="@+id/footerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
