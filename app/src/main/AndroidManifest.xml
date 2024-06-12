@@ -43,6 +43,14 @@
         </activity>
         <activity android:name=".Activities.CommentActivity">
         </activity>
+        <activity android:name=".Activities.GenPrepActivity">
+        </activity>
+        <activity android:name=".Activities.PrePrepActivity">
+        </activity>
+        <activity android:name=".Activities.InWaterActivity">
+        </activity>
+        <activity android:name=".Activities.StrongWaterActivity">
+        </activity>
 
 
     </application>

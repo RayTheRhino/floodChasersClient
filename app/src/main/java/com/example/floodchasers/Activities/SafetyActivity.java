@@ -16,6 +16,7 @@ public class SafetyActivity extends AppCompatActivity {
     private TextView username, TV_Em_response_hub;
     private ImageView settings, settings_IMV_Logo;
     private MaterialButton BTN_safety_inst,BTN_curr_loc,BTN_emergency_num;
+
     private Footer footerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,13 @@ public class SafetyActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SafetyActivity.this, EmergencyNumbersActivity.class);
+                startActivity(intent);
+            }
+        });
+        BTN_safety_inst.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SafetyActivity.this, EmergencyInfoActivity.class);
                 startActivity(intent);
             }
         });
