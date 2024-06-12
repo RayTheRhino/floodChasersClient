@@ -39,6 +39,10 @@
         </activity>
         <activity android:name=".Activities.AlertsActivity">
         </activity>
+        <activity android:name=".Activities.ForumActivity">
+        </activity>
+        <activity android:name=".Activities.CommentActivity">
+        </activity>
 
 
     </application>

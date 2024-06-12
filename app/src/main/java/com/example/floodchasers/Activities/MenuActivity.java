@@ -41,12 +41,12 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(new Intent(MenuActivity.this,MainActivity.class));
             }
         });
-//        forums.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(EmergencyNumbersActivity.this,));
-//            }
-//        });
+        forums.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MenuActivity.this,ForumActivity.class));
+            }
+        });
 //        alerts.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {

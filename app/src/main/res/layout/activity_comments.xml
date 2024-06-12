@@ -6,28 +6,30 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:layout_margin="20dp"
+    android:background="@drawable/ic_launcher_background_wave_up"
     android:orientation="vertical"
-    tools:context=".Activities.SignUpActivity"
-    android:background="@drawable/ic_launcher_background_wave_up">
+    tools:context=".Activities.SignUpActivity">
 
     <!-- Header: User Profile Picture and Name -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-<!--        <ImageView-->
-<!--            android:layout_width="48dp"-->
-<!--            android:layout_height="48dp"-->
-<!--            android:src="@drawable/user_profile_picture" />-->
+        <!--        <ImageView-->
+        <!--            android:layout_width="48dp"-->
+        <!--            android:layout_height="48dp"-->
+        <!--            android:src="@drawable/user_profile_picture" />-->
         <TextView
+            android:id="@+id/username"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:text="John Doe"
-            android:textSize="16sp"
             android:layout_gravity="center_vertical"
-            android:layout_marginStart="16dp" />
+            android:layout_marginStart="16dp"
+            android:text="John Doe"
+            android:textSize="16sp" />
 
         <ImageView
+            android:id="@+id/settings"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginLeft="50dp"
@@ -37,82 +39,105 @@
 
     <!--Title -->
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/TV_comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Forums"
-        android:textSize="30dp"
-        android:textAlignment="center"/>
+        android:text="Comments"
+        android:textAlignment="center"
+        android:textSize="30dp" />
+
     <TextView
+        android:id="@+id/Tv_forum_topic"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:id="@+id/Tv_forum_topic"/>
+        android:layout_height="50dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
     <!--Forum topics -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edit_text"
-        android:layout_marginBottom="10dp">
+        android:orientation="vertical"
+        android:layout_weight="2"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/edit_text">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="230dp"
-           android:layout_margin="5dp"
-            />
+            android:layout_margin="5dp"
+            android:layout_weight="1.9"
+            tools:listitem="@layout/comment_card" />
+        <Button
+            android:id="@+id/BTN_add_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:text="Add Comment"
+            android:backgroundTint="@color/primary_color"
+            app:cornerRadius="5dp"/>
     </LinearLayout>
 
     <!-- Add Forum Topic    -->
 
     <LinearLayout
+        android:id="@+id/lay_add_comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/edit_text"
-        android:layout_marginBottom="10dp">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_margin="7dp">
+            android:layout_margin="7dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/add_comment_LBL"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Add Topic:"
                 android:gravity="center"
-                />
+                android:text="Add Comment:" />
 
             <ImageView
                 android:id="@+id/Edit_Comment_IV"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginLeft="250dp"
-                android:src="@drawable/pencil"
-                />
+                android:src="@drawable/pencil" />
         </LinearLayout>
         <!--  Title Section      -->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="5dp">
+            android:layout_margin="5dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/comment_title_LBL"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="Title: "/>
+                android:text="Title: " />
 
             <EditText
+                android:id="@+id/comment_title_EDT"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/comment_title_EDT"
                 android:layout_margin="5dp"
-                android:background="@drawable/edit_text"/>
+                android:background="@drawable/edit_text" />
 
         </LinearLayout>
 
@@ -120,14 +145,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            >
+            android:layout_margin="5dp">
+
             <TextView
                 android:id="@+id/comment_body_LBL"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Body:"
-                android:layout_margin="5dp">
+                android:layout_margin="5dp"
+                android:text="Body:">
 
             </TextView>
 
@@ -143,28 +168,27 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="10dp">
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/Add_Meta_BTN"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add image/Video"
-                app:cornerRadius="5dp"
                 android:layout_weight="1"
-                android:backgroundTint="@color/primary_color"/>
+                android:backgroundTint="@color/primary_color"
+                android:text="Add image/Video"
+                app:cornerRadius="5dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/Add_Comment_BTN"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add Topic"
-                android:layout_weight="1"
-                app:cornerRadius="5dp"
                 android:layout_marginLeft="5dp"
+                android:layout_weight="1"
                 android:backgroundTint="@color/primary_color"
-                />
+                android:text="Add Comment"
+                app:cornerRadius="5dp" />
         </LinearLayout>
 
     </LinearLayout>
@@ -172,55 +196,53 @@
     <!--The Navbar-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/home"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textAlignment="center"
-            android:textSize="16sp"
             android:text="Home"
-            >
-        </com.google.android.material.textview.MaterialTextView>
+            android:textAlignment="center"
+            android:textSize="16sp"></com.google.android.material.textview.MaterialTextView>
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/forums"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
             android:layout_weight="1"
-            android:textSize="16sp"
             android:text="Forums"
+            android:textAlignment="center"
             android:textColor="@color/primary_color"
-            android:textStyle="bold">
-        </com.google.android.material.textview.MaterialTextView>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_weight="1"
-            android:text="Alerts">
-        </com.google.android.material.textview.MaterialTextView>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_weight="1"
             android:textSize="16sp"
-            android:text="Safety">
-        </com.google.android.material.textview.MaterialTextView>
+            android:textStyle="bold"></com.google.android.material.textview.MaterialTextView>
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/alerts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
             android:layout_weight="1"
-            android:textSize="16sp"
-            android:text="Profile">
-        </com.google.android.material.textview.MaterialTextView>
+            android:text="Alerts"
+            android:textAlignment="center"></com.google.android.material.textview.MaterialTextView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/safety"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Safety"
+            android:textAlignment="center"
+            android:textSize="16sp"></com.google.android.material.textview.MaterialTextView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Profile"
+            android:textAlignment="center"
+            android:textSize="16sp"></com.google.android.material.textview.MaterialTextView>
     </LinearLayout>
 
     <ImageView
