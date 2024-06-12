@@ -13,7 +13,6 @@ import com.example.floodchasers.Views.Footer;
 
 public class AlertsActivity extends AppCompatActivity {
     private ListView alertsListView;
-
     private Footer footerView;
 
     @Override
@@ -38,15 +37,12 @@ public class AlertsActivity extends AppCompatActivity {
         footerView.setHomeButtonClickListener(v ->
                 startActivity(new Intent(AlertsActivity.this, MainActivity.class))
         );
-
         footerView.setForumsButtonClickListener(v ->
                 startActivity(new Intent(AlertsActivity.this, ForumActivity.class))
         );
-
         footerView.setSafetyButtonClickListener(v ->
                 startActivity(new Intent(AlertsActivity.this, SafetyActivity.class))
         );
-
         footerView.setAlertsButtonClickListener(v ->
                 startActivity(new Intent(AlertsActivity.this, AlertsActivity.class))
         );
