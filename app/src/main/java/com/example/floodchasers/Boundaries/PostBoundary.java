@@ -4,7 +4,7 @@ import com.example.floodchasers.Objects.Post;
 
 import java.util.List;
 
-public class ForumBoundary {
+public class PostBoundary {
     public String id;
     public List<Post> posts;
 

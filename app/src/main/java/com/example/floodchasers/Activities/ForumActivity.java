@@ -12,9 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.floodchasers.Adapter.ForumAdapter;
-import com.example.floodchasers.Api.ForumApi;
-import com.example.floodchasers.Boundaries.ForumBoundary;
+import com.example.floodchasers.Adapter.PostAdapter;
+import com.example.floodchasers.Api.PostApi;
+import com.example.floodchasers.Boundaries.PostBoundary;
+import com.example.floodchasers.Objects.Post;
 import com.example.floodchasers.R;
 import com.google.android.material.textview.MaterialTextView;
 
@@ -28,24 +29,27 @@ public class ForumActivity extends AppCompatActivity {
     private ImageView settings;
     private MaterialTextView home, forums, alerts,safety, profile;
     private RecyclerView RV_forum;
-    private  ForumAdapter forumAdapter;
-    private ArrayList<ForumBoundary> forumBoundaries;
+    private PostAdapter postAdapter;
+    private ArrayList<PostBoundary> forumBoundaries;
     private Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(SERVER_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build();
-    private ForumApi forumApi;
+    private PostApi postApi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forum);
         findViews();
         barListeners();
+        ClickListeners();
+//        CretePostReq();
 
-        forumBoundaries = new ArrayList<ForumBoundary>();
+
+        forumBoundaries = new ArrayList<PostBoundary>();
         RV_forum.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        forumAdapter = new ForumAdapter(ForumActivity.this,forumBoundaries);
-        RV_forum.setAdapter(forumAdapter);
+        postAdapter = new PostAdapter(ForumActivity.this,forumBoundaries);
+        RV_forum.setAdapter(postAdapter);
         RV_forum.setHasFixedSize(true);
 
 
@@ -59,6 +63,20 @@ public class ForumActivity extends AppCompatActivity {
 //        });
 
     }
+
+    private void ClickListeners() {
+
+    }
+
+//    private void CretePostReq() {
+//        postApi = retrofit.create(PostApi.class);
+//        Post CreatePostRequest= new Post();
+//        CreatePostRequest.setId();
+//        CreatePostRequest.setBody();
+//        CreatePostRequest.setTimeCreated();
+//        CreatePostRequest.setTitle();
+//    }
+
     private void barListeners() {
         home.setOnClickListener(new View.OnClickListener() {
             @Override

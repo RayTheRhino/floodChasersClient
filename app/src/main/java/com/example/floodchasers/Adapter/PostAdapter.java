@@ -11,33 +11,33 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.example.floodchasers.Boundaries.ForumBoundary;
+import com.example.floodchasers.Boundaries.PostBoundary;
 import com.example.floodchasers.R;
 
 import java.util.ArrayList;
 
-public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> {
+public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     public Context context;
     private int currPosition;
-    public ArrayList<ForumBoundary> forumBoundaries;
+    public ArrayList<PostBoundary> forumBoundaries;
 
 //    private boolean showNameOnly = false;
 
-    public ForumAdapter(Context context, ArrayList<ForumBoundary> forumBoundaries){
+    public PostAdapter(Context context, ArrayList<PostBoundary> forumBoundaries){
         this.context = context;
         this.forumBoundaries = forumBoundaries;
         currPosition = 0;
     }
     @NonNull
     @Override
-    public ForumAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PostAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.activity_forum, parent, false);
         return new ViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ForumAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PostAdapter.ViewHolder holder, int position) {
         currPosition = position;
         holder.bind(forumBoundaries.get(position));
     }
@@ -79,10 +79,10 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
             forum_body = itemView.findViewById(R.id.forum_body);
             forum_created_time = itemView.findViewById(R.id.forum_created_time);
         }
-        public void bind(ForumBoundary forumBoundary){
-            forum_title.setText(forumBoundary.getPosts().get(currPosition).getTitle());
-            forum_body.setText(forumBoundary.getPosts().get(currPosition).getBody());
-            forum_created_time.setText(forumBoundary.getPosts().get(currPosition).getTimeCreated());
+        public void bind(PostBoundary postBoundary){
+            forum_title.setText(postBoundary.getPosts().get(currPosition).getTitle());
+            forum_body.setText(postBoundary.getPosts().get(currPosition).getBody());
+            forum_created_time.setText(postBoundary.getPosts().get(currPosition).getTimeCreated());
         }
     }
 
