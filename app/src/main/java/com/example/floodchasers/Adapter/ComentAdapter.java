@@ -54,13 +54,11 @@ public class ComentAdapter extends RecyclerView.Adapter<ComentAdapter.ViewHolder
 
     class ViewHolder extends RecyclerView.ViewHolder {
         public TextView comment_title, comment_content,comment_author, comment_published_at;
-        public ImageView comment_image_view;
         public CardView cardView;
 
         public ViewHolder(View itemView) {
             super(itemView);
             comment_title = itemView.findViewById(R.id.comment_title);
-            comment_image_view = itemView.findViewById(R.id.comment_image_view);
             comment_content = itemView.findViewById(R.id.comment_content);
             comment_author = itemView.findViewById(R.id.comment_author);
             comment_published_at = itemView.findViewById(R.id.comment_published_at);

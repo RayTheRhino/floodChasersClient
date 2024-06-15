@@ -38,7 +38,6 @@ public class ForumActivity extends AppCompatActivity {
     private Button BTN_add_topic;
     private ForumAdapter forumAdapter;
     private ArrayList<PostBoundary> forumBoundaries;
-    private ArrayList<String> testArray;
     private Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(SERVER_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -53,7 +52,7 @@ public class ForumActivity extends AppCompatActivity {
         ClickListeners();
 //        CretePostReq();
 
-        testArray = new ArrayList<>();
+        ArrayList<String> testArray = new ArrayList<>();
         testArray.add("Banana");
         testArray.add("Apple");
         testArray.add("Olive");
