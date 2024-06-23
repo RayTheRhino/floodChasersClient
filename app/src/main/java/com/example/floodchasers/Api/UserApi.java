@@ -21,19 +21,19 @@ public interface UserApi {
     Call<Void> CreateNewUser(@Field("JsonData") String signUpData, @Field("Image") byte[] image);
 
     @GET("Users/GetUserById")
-    Call<User>getUserById(@Query("userId") String userId);
+    Call<User>GetUserById(@Query("userId") String userId);
 
     @GET("Users/GetAllUsers")
-    Call<JsonArray> getAllUsers();
+    Call<JsonArray> GetAllUsers();
 
     @PUT("Users/UpdateUser")
-    Call<JsonObject> updateUser(@Body JsonObject userJson);
+    Call<JsonObject> UpdateUser(@Body JsonObject userJson);
 
     @DELETE("Users/DeleteUserById")
-    Call<Void> deleteUserById(@Query("userId") String userId);
+    Call<Void> DeleteUserById(@Query("userId") String userId);
 
     @DELETE("Users/DeleteAllUsers")
-    Call<Void> deleteAllUsers();
+    Call<Void> DeleteAllUsers();
 
     @GET("Users/Login")
     Call<User>LoggedInUser(@Query("email") String email, @Query("password")String password);

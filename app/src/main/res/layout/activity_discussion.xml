@@ -67,7 +67,7 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/edit_text"/>
 
-        <!-- Add more UI components for displaying top 3 comments -->
+        <!-- Add more UI components for displaying top 3 commentBoundaries -->
     </LinearLayout>
         <!--    Need to add edit comment-->
 
