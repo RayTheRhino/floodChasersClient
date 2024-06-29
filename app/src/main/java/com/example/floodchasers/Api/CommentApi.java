@@ -1,5 +1,5 @@
 package com.example.floodchasers.Api;
-import com.example.floodchasers.Boundaries.CommentBoundary;
+import com.example.floodchasers.Boundaries.Comment;
 
 
 import retrofit2.Call;
@@ -13,15 +13,15 @@ import retrofit2.http.Query;
 public interface CommentApi {
 
     @POST("Comments/CreateComment")
-    Call<CommentBoundary>CreateComment(@Body CommentBoundary newCommentBoundary);
+    Call<Comment>CreateComment(@Body Comment newComment);
 
     @POST("Comments/AddCommentToComment")
-    Call<CommentBoundary> AddCommentToComment(@Body CommentBoundary newCommentBoundary, @Query("id") String commentParentId);
+    Call<Comment> AddCommentToComment(@Body Comment newComment, @Query("id") String commentParentId);
     @GET("Comments/GetAllComments")
-    Call<CommentBoundary> GetAllComments();
+    Call<Comment> GetAllComments();
 
     @PUT("Comments/UpdateComment")
-    Call<CommentBoundary> GetCommentById(@Body CommentBoundary commentBoundaryUpdate);
+    Call<Comment> GetCommentById(@Body Comment commentUpdate);
 
     @DELETE("Comments/DeleteCommentById")
     Call<Void>DeleteCommentById(@Query("id") String CommentId);

@@ -14,17 +14,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.floodchasers.Activities.CommentActivity;
+import com.example.floodchasers.Objects.Post;
 import com.example.floodchasers.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> {
 
-    private ArrayList<String> mData;
+    private List<Post> mData;
     private Context mContext;
 
 
-    public ForumAdapter(Context context, ArrayList<String> data) {
+    public ForumAdapter(Context context, List<Post> data) {
         this.mData = data;
         this.mContext = context;
     }
@@ -38,7 +40,7 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ForumAdapter.ViewHolder holder, int position) {
-        String text = mData.get(position);
+        Post text = mData.get(position);
 //        holder.textView.setText(text);
         holder.cardView.setOnClickListener(v -> {
             Intent intent = new Intent(mContext, CommentActivity.class);

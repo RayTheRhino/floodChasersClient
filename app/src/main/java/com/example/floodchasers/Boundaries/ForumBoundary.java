@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ForumBoundary {
     @SerializedName("Id")
-    public String id;
+    public  String id;
     @SerializedName("Name")
     public String name;
     @SerializedName("Posts")

@@ -39,7 +39,7 @@ public class CommentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_comments);
         findViews();
         barListeners();
-
+        ClickListeners();
 
         testArray = new ArrayList<>();
         testArray.add("Banana");
@@ -50,6 +50,15 @@ public class CommentActivity extends AppCompatActivity {
         ComentAdapter = new ComentAdapter(CommentActivity.this,testArray);
         recyclerView.setAdapter(ComentAdapter);
         recyclerView.setHasFixedSize(true);
+    }
+
+    private void ClickListeners() {
+        BTN_add_comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                lay_add_comment.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     private void findViews() {

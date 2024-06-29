@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 import java.util.List;
 
-public class CommentBoundary {
+public class Comment {
     @SerializedName("Id")
     public String id;
 
@@ -18,12 +18,12 @@ public class CommentBoundary {
     @SerializedName("TimeCreated")
     public Date timeCreated;
     @SerializedName("Comments")
-    public List<CommentBoundary> commentBoundaries;
+    public List<Comment> commentBoundaries;
 
-    public CommentBoundary() {
+    public Comment() {
     }
 
-    public CommentBoundary(String id, String title, String body, Date timeCreated, List<CommentBoundary> commentBoundaries) {
+    public Comment(String id, String title, String body, Date timeCreated, List<Comment> commentBoundaries) {
         this.id = id;
         this.title = title;
         this.body = body;
@@ -63,11 +63,11 @@ public class CommentBoundary {
         this.timeCreated = timeCreated;
     }
 
-    public List<CommentBoundary> getComments() {
+    public List<Comment> getComments() {
         return commentBoundaries;
     }
 
-    public void setComments(List<CommentBoundary> commentBoundaries) {
+    public void setComments(List<Comment> commentBoundaries) {
         this.commentBoundaries = commentBoundaries;
     }
 }

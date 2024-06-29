@@ -70,7 +70,6 @@ public class MainActivity  extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Failed to get articles", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Toast.makeText(MainActivity.this, "Got articles", Toast.LENGTH_SHORT).show(); //remove later
                     learnBoundaries.addAll(response.body());
                     articlesAdapter.notifyDataSetChanged();
                 }

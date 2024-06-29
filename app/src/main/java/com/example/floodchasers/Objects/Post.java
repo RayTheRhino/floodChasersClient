@@ -1,29 +1,30 @@
 package com.example.floodchasers.Objects;
 
+import com.example.floodchasers.Boundaries.Comment;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
 public class Post {
-    @SerializedName("Id")
+    @SerializedName("id")
     public String id;
 //    @SerializedName("imageData")
 //    private ImageData imageData;
-    @SerializedName("Body")
+    @SerializedName("body")
     public String body;
-    @SerializedName("Title")
+    @SerializedName("title")
     public String title;
-    @SerializedName("TimeCreated")
+    @SerializedName("timeCreated")
     public String timeCreated ;
-    @SerializedName("CommentsIds")
-    public List<String> commentsIds;
+    @SerializedName("comments")
+    public List<Comment> comments;
 
-    public Post(String id, String body, String title, String timeCreated, List<String> commentsIds) {
+    public Post(String id, String body, String title, String timeCreated, List<Comment> comments) {
         this.id = id;
         this.body = body;
         this.title = title;
         this.timeCreated = timeCreated;
-        this.commentsIds = commentsIds;
+        this.comments= comments;
     }
 
     public Post() {
@@ -61,11 +62,11 @@ public class Post {
         this.timeCreated = timeCreated;
     }
 
-    public List<String> getCommentsIds() {
-        return commentsIds;
+    public List<Comment> getCommentsIds() {
+        return comments;
     }
 
-    public void setCommentsIds(List<String> commentsIds) {
-        this.commentsIds = commentsIds;
+    public void setCommentsIds(List<Comment> commentsIds) {
+        this.comments = commentsIds;
     }
 }

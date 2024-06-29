@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:elevation="10dp"
-    app:cardBackgroundColor="#F3E6E3"
     app:cardUseCompatPadding="true"
     android:id="@+id/comment_card"
     app:contentPadding="5dp">
