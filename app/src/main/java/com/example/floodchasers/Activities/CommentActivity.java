@@ -22,7 +22,7 @@ import com.google.android.material.textview.MaterialTextView;
 import java.util.ArrayList;
 
 public class CommentActivity extends AppCompatActivity {
-    private TextView username, add_comment_LBL, comment_title_LBL, comment_body_LBL;
+    private TextView username, add_comment_LBL, comment_title_LBL, comment_body_LBL,TV_forum_topic;
     private ImageView settings;
     private MaterialTextView TV_comment, home, forums, alerts, safety, profile;
     private RecyclerView recyclerView;
@@ -77,6 +77,7 @@ public class CommentActivity extends AppCompatActivity {
         alerts = findViewById(R.id.alerts);
         safety = findViewById(R.id.safety);
         profile = findViewById(R.id.profile);
+        TV_forum_topic = findViewById(R.id.TV_forum_topic);
         BTN_add_comment= findViewById(R.id.BTN_add_comment);
         lay_add_comment = findViewById(R.id.lay_add_comment);
         lay_add_comment.setVisibility(View.GONE);

@@ -53,13 +53,16 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/this_is_a_sample_post_content_lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit"
             android:padding="16dp"
-            android:layout_weight="3"/>
+            android:layout_weight="3"
+            android:background="@drawable/edit_text"
+            android:layout_margin="5dp"
+            android:hint="Enter Location"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="->"
+            android:backgroundTint="@color/primary_color"
             android:layout_weight="1"/>
     </LinearLayout>
 
