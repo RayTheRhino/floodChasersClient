@@ -16,10 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.floodchasers.Adapter.ForumAdapter;
 import com.example.floodchasers.Adapter.PostAdapter;
 import com.example.floodchasers.Api.PostApi;
-import com.example.floodchasers.Boundaries.ForumBoundary;
 import com.example.floodchasers.Objects.Post;
 import com.example.floodchasers.R;
 import com.google.android.material.button.MaterialButton;
@@ -99,6 +97,13 @@ public class ForumActivity extends AppCompatActivity {
                 createPost(title,body);
             }
         });
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ForumActivity.this, UserSettingsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void GetAllPosts() {
@@ -163,12 +168,12 @@ public class ForumActivity extends AppCompatActivity {
                 startActivity(new Intent(ForumActivity.this, ForumActivity.class));
             }
         });
-//        alerts.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(ForumActivity.this,AlertsActivity.class);
-//            }
-//        });
+        alerts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ForumActivity.this,AlertsActivity.class));
+            }
+        });
         safety.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

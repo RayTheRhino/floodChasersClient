@@ -4,6 +4,7 @@ import static com.example.floodchasers.Objects.AppConfig.SERVER_URL;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -32,6 +33,17 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         findViews();
         barListeners();
+        ClickListeners();
+    }
+
+    private void ClickListeners() {
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuActivity.this, UserSettingsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void barListeners() {
@@ -47,24 +59,24 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(new Intent(MenuActivity.this,ForumActivity.class));
             }
         });
-//        alerts.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(EmergencyNumbersActivity.this,);
-//            }
-//        });
+        alerts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MenuActivity.this,AlertsActivity.class));
+            }
+        });
         safety.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MenuActivity.this, SafetyActivity.class));
             }
         });
-        profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this, EmergencyNumbersActivity.class));
-            }
-        });
+//        profile.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(MenuActivity.this, EmergencyNumbersActivity.class));
+//            }
+//        });
     }
 
 

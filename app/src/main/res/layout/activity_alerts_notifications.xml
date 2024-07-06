@@ -2,9 +2,12 @@
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_gravity="center"
     android:layout_margin="20dp"
     android:orientation="vertical"
+    tools:context=".Activities.AlertNotificationActivity"
     android:background="@drawable/ic_launcher_background_wave_up">
 
     <!-- Header: User Profile Picture and Name -->
@@ -17,6 +20,7 @@
         <!--            android:layout_height="48dp"-->
         <!--            android:src="@drawable/user_profile_picture" /> -->
         <TextView
+            android:id="@+id/username"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:text="@string/john_doe"
@@ -25,6 +29,7 @@
             android:layout_marginStart="16dp" />
 
         <ImageView
+            android:id="@+id/settings"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginStart="20dp"
@@ -50,8 +55,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_margin="10dp">
+            android:padding="10dp"
+            android:layout_marginTop="10dp">
             <TextView
+                android:id="@+id/TV_set_alert"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Set Alerts On/Off"
@@ -59,6 +66,7 @@
                 android:layout_weight="1"
                 />
             <ToggleButton
+                android:id="@+id/TB_set_alert"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edit_text"
@@ -68,8 +76,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_margin="10dp">
+            android:padding="10dp"
+            android:layout_marginTop="10dp">
             <TextView
+                android:id="@+id/TV_update_timing"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Update Timing"
@@ -77,6 +87,7 @@
                 android:layout_weight="1"
                 />
             <Spinner
+                android:id="@+id/Sp_update_timing_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:background="@drawable/edit_text"
@@ -86,8 +97,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_margin="10dp">
+            android:padding="10dp"
+            android:layout_marginTop="20dp">
             <TextView
+                android:id="@+id/tv_choose_alert"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Choose Alerts Location"
@@ -95,6 +108,7 @@
 
                 />
             <EditText
+                android:id="@+id/EDt_choose_alert"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
@@ -109,11 +123,10 @@
                 android:textAllCaps="false"
                 android:text="Enter Location"
                 android:layout_marginTop="10dp"
+                app:cornerRadius="5dp"
                 android:backgroundTint="@color/primary_color"/>
 
         </LinearLayout>
-
-
     </LinearLayout>
 
 

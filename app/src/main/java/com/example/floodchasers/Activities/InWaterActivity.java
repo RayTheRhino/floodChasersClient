@@ -1,12 +1,15 @@
 package com.example.floodchasers.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.floodchasers.R;
+import com.example.floodchasers.Views.Footer;
 import com.google.android.material.textview.MaterialTextView;
 
 public class InWaterActivity  extends AppCompatActivity {
@@ -18,10 +21,18 @@ public class InWaterActivity  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emergency_in_water);
         findViews();
-        onClick();
+        ClickListeners();
     }
 
-    private void onClick() {
+
+    private void ClickListeners() {
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(InWaterActivity.this, UserSettingsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void findViews() {
@@ -36,4 +47,5 @@ public class InWaterActivity  extends AppCompatActivity {
         safety = findViewById(R.id.safety);
         profile = findViewById(R.id.profile);
     }
+
 }

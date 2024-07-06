@@ -1,91 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:layout_gravity="center"
     android:layout_margin="20dp"
     android:background="@drawable/ic_launcher_background_wave_up"
     android:orientation="vertical"
-    tools:context=".Activities.AlertsActivity">
+    tools:context=".Activities.UserSettingsActivity">
 
-    <!-- Header: User Profile Picture and Name -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <!-- <ImageView-->
+        <!--        <ImageView-->
         <!--            android:layout_width="48dp"-->
         <!--            android:layout_height="48dp"-->
-        <!--            android:src="@drawable/user_profile_picture" /> -->
+        <!--            android:src="@drawable/user_profile_picture" />-->
         <TextView
             android:id="@+id/username"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="16dp"
-            android:text="@string/john_doe"
+            android:text="John Doe"
             android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/settings"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="5dp"
             android:src="@drawable/cogwheel" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/alertsTitleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/flood_alerts"
-        android:textSize="24sp" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/alertsRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="9" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="20dp">
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="60dp"
+        android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/ET_set_location"
+        <ImageView
+            android:id="@+id/profile_IMV_user_profile"
+            android:layout_width="145dp"
+            android:layout_height="145dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="50dp" />
+
+        <TextView
+            android:id="@+id/TV_profile_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_weight="3"
-            android:background="@drawable/edit_text"
-            android:hint="Enter Location"
-            android:padding="16dp" />
+            android:text="John Doe"
+            android:textAlignment="center" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/BTN_enter_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:cornerRadius="5dp"
-            android:backgroundTint="@color/primary_color"
-            android:text="->" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/Tv_profile_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint=" Display Status:"
+        android:padding="10dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <EditText
+            android:id="@+id/EDT_profile_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/edit_text"
+            android:hint="  Write a status" />
+
+    </LinearLayout>
+
+
+    <!--   Button section       -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/Add_Meta_BTN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/primary_color"
+            android:text="Upload Image"
+            app:cornerRadius="5dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/Add_status_BTN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/primary_color"
+            android:text="Add Status"
+            app:cornerRadius="5dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp">
+
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/home"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Home"
             android:textAlignment="center"
@@ -128,6 +161,7 @@
             android:textAlignment="center"
             android:textSize="16sp"></com.google.android.material.textview.MaterialTextView>
     </LinearLayout>
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="80dp"

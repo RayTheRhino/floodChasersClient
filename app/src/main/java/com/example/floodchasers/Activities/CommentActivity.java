@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.floodchasers.Adapter.ComentAdapter;
-import com.example.floodchasers.Adapter.ForumAdapter;
 import com.example.floodchasers.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textview.MaterialTextView;
@@ -59,6 +58,13 @@ public class CommentActivity extends AppCompatActivity {
                 lay_add_comment.setVisibility(View.VISIBLE);
             }
         });
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CommentActivity.this, UserSettingsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void findViews() {
@@ -95,12 +101,12 @@ public class CommentActivity extends AppCompatActivity {
                 startActivity(new Intent(CommentActivity.this,ForumActivity.class));
             }
         });
-//        alerts.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(EmergencyNumbersActivity.this,);
-//            }
-//        });
+        alerts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(CommentActivity.this,AlertsActivity.class));
+            }
+        });
         safety.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -8,7 +8,7 @@
     android:layout_margin="20dp"
     android:background="@drawable/ic_launcher_background_wave_up"
     android:orientation="vertical"
-    tools:context=".Activities.SignUpActivity">
+    tools:context=".Activities.ForumActivity">
 
     <!-- Header: User Profile Picture and Name -->
     <LinearLayout

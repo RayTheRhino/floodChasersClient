@@ -51,13 +51,23 @@ public class MainActivity  extends AppCompatActivity {
         findViews();
         barListeners();
         footerView.updateTextColor(footerView.getHome());
-
+        ClickListeners();
         learnBoundaries = new ArrayList<LearnBoundary>();
         rv_newslist.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         articlesAdapter = new ArticlesAdapter(MainActivity.this,learnBoundaries);
         rv_newslist.setAdapter(articlesAdapter);
         learnApi = retrofit.create(LearnApi.class);
         populateArticles();
+    }
+
+    private void ClickListeners() {
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, UserSettingsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void populateArticles(){

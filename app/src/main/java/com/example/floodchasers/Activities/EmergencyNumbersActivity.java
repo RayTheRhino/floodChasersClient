@@ -26,6 +26,17 @@ public class EmergencyNumbersActivity extends AppCompatActivity {
         findViews();
         barListeners();
         DialActions();
+        ClickListeners();
+    }
+
+    private void ClickListeners() {
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EmergencyNumbersActivity.this, UserSettingsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void DialActions() {
@@ -77,12 +88,12 @@ public class EmergencyNumbersActivity extends AppCompatActivity {
                 startActivity(new Intent(EmergencyNumbersActivity.this,ForumActivity.class));
             }
         });
-//        alerts.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(EmergencyNumbersActivity.this,);
-//            }
-//        });
+        alerts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(EmergencyNumbersActivity.this,AlertsActivity.class));
+            }
+        });
         safety.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

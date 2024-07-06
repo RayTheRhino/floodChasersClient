@@ -9,7 +9,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.floodchasers.R;
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textview.MaterialTextView;
 
 public class GenPrepActivity extends AppCompatActivity {
@@ -22,10 +21,10 @@ public class GenPrepActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emergency_gen_prep);
         findViews();
-        onClick();
+        ClickListeners();
     }
 
-    private void onClick() {
+    private void ClickListeners() {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -38,12 +37,12 @@ public class GenPrepActivity extends AppCompatActivity {
                 startActivity(new Intent(GenPrepActivity.this,ForumActivity.class));
             }
         });
-//        alerts.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(EmergencyNumbersActivity.this,);
-//            }
-//        });
+        alerts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(GenPrepActivity.this,AlertsActivity.class));
+            }
+        });
         safety.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,36 +55,13 @@ public class GenPrepActivity extends AppCompatActivity {
 //                startActivity(new Intent(CommentActivity.this, EmergencyNumbersActivity.class));
 //            }
 //        });
-        home.setOnClickListener(new View.OnClickListener() {
+        settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(GenPrepActivity.this,MainActivity.class));
+                Intent intent = new Intent(GenPrepActivity.this, UserSettingsActivity.class);
+                startActivity(intent);
             }
         });
-        forums.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(GenPrepActivity.this,ForumActivity.class));
-            }
-        });
-//        alerts.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(EmergencyNumbersActivity.this,);
-//            }
-//        });
-        safety.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(GenPrepActivity.this, SafetyActivity.class));
-            }
-        });
-//        profile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(GenPrepActivity.this, EmergencyNumbersActivity.class));
-//            }
-//        });
     }
 
     private void findViews() {

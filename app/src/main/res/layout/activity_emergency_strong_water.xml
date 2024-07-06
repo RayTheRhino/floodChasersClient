@@ -67,20 +67,25 @@
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
             android:orientation="horizontal">
-            <TextView
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit_text"
-                android:id="@+id/TV_strong_water_prep"
-                android:padding="10dp"
-                android:text="1. אם האוטו מתחיל להיסחף או כבה, פתחו מיד את החגורה ואת כל החלונות. חייגו 102 ובקשו עזרה.\n
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text"
+                    android:id="@+id/TV_strong_water_prep"
+                    android:padding="10dp"
+                    android:text="1. אם האוטו מתחיל להיסחף או כבה, פתחו מיד את החגורה ואת כל החלונות. חייגו 102 ובקשו עזרה.\n
 2. החלונות לא נפתחים? שברו את אחד החלונות. קחו בחשבון שהמים לוחצים על הזכוכית כך שהם יעיפו עליכם את השברים.  אין לכם איך לשבור את החלון? המתינו לכניסת מים לרכב עד לגובה הראש ופתחו דלת. אנחנו יודעים שזה נשמע מלחיץ, אבל הדלת לא תיפתח עד שהלחץ של המים ברכב ומחוצה לו ישתווה.\n
-אם מפלס המים ממשיך לעלות:
+אם מפלס המים ממשיך לעלות:\n
 3. עלו על גג הרכב והאחזו בו.\n
 4. אם בשלב זה הזרימה לא מתגברת והרכב יציב, הישארו על הגג עד לחילוץ.\n
 5. אם הזרימה מתגברת ויש בסמוך אליכם נקודה גבוהה, יציבה ובטוחה שקל להגיע אליה, עשו זאת.\n
 6. אם מפלס המים לא מפסיק לעלות ואתם חוששים מהתהפכות עם הרכב (זה יקרה במצבים של רכב שנסחף בשיטפון), זה הזמן להיכנס למים, גם אם הם ייסחפו אתכם למרחק רב."
-                />
+                    />
+            </ScrollView>
+
         </LinearLayout>
     </LinearLayout>
 

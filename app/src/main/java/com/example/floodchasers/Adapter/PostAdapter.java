@@ -1,6 +1,7 @@
 package com.example.floodchasers.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,9 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.floodchasers.Activities.CommentActivity;
 import com.example.floodchasers.Objects.Post;
 import com.example.floodchasers.R;
 
@@ -36,6 +39,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull PostAdapter.ViewHolder holder, int position) {
         holder.bind(posts.get(position));
+        holder.postView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, CommentActivity.class);
+//            intent.putExtra("ITEM_TEXT", text);
+            context.startActivity(intent);
+        });
+
     }
 
 
@@ -47,6 +56,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
     private ImageView forum_image_view;
     private TextView forum_title, forum_body, forum_created_time;
+    private CardView postView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -56,6 +66,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             forum_title = itemView.findViewById(R.id.forum_title);
             forum_body = itemView.findViewById(R.id.forum_body);
             forum_created_time = itemView.findViewById(R.id.forum_created_time);
+            postView = itemView.findViewById(R.id.post_card);
         }
         public void bind(Post post){
             forum_title.setText(post.getTitle());

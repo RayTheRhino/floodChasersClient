@@ -1,6 +1,8 @@
 package com.example.floodchasers.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -8,20 +10,29 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.floodchasers.R;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textview.MaterialTextView;
 
 public class PrePrepActivity extends AppCompatActivity {
     private TextView username, TV_pre_prep, Tv_pre_prep_info;
     private ImageView settings, IMV_pre_prep_im;
-    private MaterialButton home, forums, alerts, safety, profile;
+    private MaterialTextView home, forums, alerts, safety, profile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emergency_pre_prep);
         findViews();
-        onClick();
+        ClickListeners();
+        barListeners();
     }
 
-    private void onClick() {
+    private void ClickListeners() {
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PrePrepActivity.this, UserSettingsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void findViews() {
@@ -35,5 +46,38 @@ public class PrePrepActivity extends AppCompatActivity {
         alerts = findViewById(R.id.alerts);
         safety = findViewById(R.id.safety);
         profile = findViewById(R.id.profile);
+    }
+
+    private void barListeners() {
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(PrePrepActivity.this,MainActivity.class));
+            }
+        });
+        forums.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(PrePrepActivity.this,ForumActivity.class));
+            }
+        });
+        alerts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(PrePrepActivity.this,AlertsActivity.class));
+            }
+        });
+        safety.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(PrePrepActivity.this, SafetyActivity.class));
+            }
+        });
+//        profile.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(MenuActivity.this, EmergencyNumbersActivity.class));
+//            }
+//        });
     }
 }

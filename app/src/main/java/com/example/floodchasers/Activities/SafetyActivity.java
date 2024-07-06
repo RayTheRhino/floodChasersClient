@@ -24,11 +24,11 @@ public class SafetyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_safety);
         findViews();
         barListeners();
-        onClick();
+        ClickListeners();
         footerView.updateTextColor(footerView.getSafety());
     }
 
-    private void onClick() {
+    private void ClickListeners() {
         BTN_emergency_num.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,6 +40,13 @@ public class SafetyActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SafetyActivity.this, EmergencyInfoActivity.class);
+                startActivity(intent);
+            }
+        });
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SafetyActivity.this, UserSettingsActivity.class);
                 startActivity(intent);
             }
         });
