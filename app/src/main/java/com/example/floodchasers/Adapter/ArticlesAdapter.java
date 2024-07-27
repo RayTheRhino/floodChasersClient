@@ -13,17 +13,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.floodchasers.Boundaries.LearnBoundary;
+import com.example.floodchasers.Boundaries.Learn;
 import com.example.floodchasers.R;
 
 import java.util.ArrayList;
 
 public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHolder> {
     public Context context;
-    public ArrayList<LearnBoundary>learnBoundaries;
-    public ArticlesAdapter(Context context, ArrayList<LearnBoundary> learnBoundaryArrayList) {
+    public ArrayList<Learn>learnBoundaries;
+    public ArticlesAdapter(Context context, ArrayList<Learn> learnArrayList) {
         this.context = context;
-        this.learnBoundaries = learnBoundaryArrayList;
+        this.learnBoundaries = learnArrayList;
     }
 
     @NonNull
@@ -60,13 +60,13 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
             article_author = itemView.findViewById(R.id.article_author);
         }
 
-        public void bind(LearnBoundary learnBoundary){
-            article_title.setText(learnBoundary.getTitle());
-            article_content.setText(learnBoundary.getContent());
+        public void bind(Learn learn){
+            article_title.setText(learn.getTitle());
+            article_content.setText(learn.getContent());
 //            article_url.setText(learnBoundary.getUrl());
-            article_published_at.setText(learnBoundary.getPublishedAt());
-            article_author.setText(learnBoundary.getAuthor());
-            Glide.with(context).load(learnBoundary.getUrlToImage()).into(article_image_view);
+            article_published_at.setText(learn.getPublishedAt());
+            article_author.setText(learn.getAuthor());
+            Glide.with(context).load(learn.getUrlToImage()).into(article_image_view);
         }
 
         public void onClick(View v) {

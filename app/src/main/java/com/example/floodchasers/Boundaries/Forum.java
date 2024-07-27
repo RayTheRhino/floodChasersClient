@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class ForumBoundary {
+public class Forum {
     @SerializedName("Id")
     public  String id;
     @SerializedName("Name")
@@ -13,10 +13,10 @@ public class ForumBoundary {
     @SerializedName("Posts")
     public List<Post> posts;
 
-    public ForumBoundary() {
+    public Forum() {
     }
 
-    public ForumBoundary(String id, String name, List<Post> posts) {
+    public Forum(String id, String name, List<Post> posts) {
         this.id = id;
         this.name = name;
         this.posts = posts;

@@ -1,5 +1,6 @@
 package com.example.floodchasers.Api;
 
+import com.example.floodchasers.Boundaries.Comment;
 import com.example.floodchasers.Objects.Post;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public interface PostApi {
     Call<Post>CreatePost(@Body Post request);
 
     @POST("/Posts/AddCommentToPost")
-    Call<Post>AddCommentToPost(@Query("postId")String postId);
+    Call<Post>AddCommentToPost(@Body Comment comment, @Query("postId")String postId);
 
     @PUT("/Posts/UpdatePost")
     Call<Post>UpdatePost(@Body Post updatedBody);

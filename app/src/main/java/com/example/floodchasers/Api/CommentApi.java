@@ -2,6 +2,8 @@ package com.example.floodchasers.Api;
 import com.example.floodchasers.Boundaries.Comment;
 
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -18,7 +20,7 @@ public interface CommentApi {
     @POST("Comments/AddCommentToComment")
     Call<Comment> AddCommentToComment(@Body Comment newComment, @Query("id") String commentParentId);
     @GET("Comments/GetAllComments")
-    Call<Comment> GetAllComments();
+    Call<List<Comment>> GetAllComments();
 
     @PUT("Comments/UpdateComment")
     Call<Comment> GetCommentById(@Body Comment commentUpdate);

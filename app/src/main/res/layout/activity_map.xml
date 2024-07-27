@@ -22,15 +22,59 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-       android:layout_marginTop="5dp">
+        android:orientation="horizontal">
 
-<!--        <com.example.floodchasers.Views.Footer-->
-<!--            android:id="@+id/footerView"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentBottom="true"/>-->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Home"
+            android:textAlignment="center"
+            android:textSize="16sp"></com.google.android.material.textview.MaterialTextView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/forums"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Forums"
+            android:textAlignment="center"
+            android:textColor="@color/primary_color"
+            android:textSize="16sp"
+            android:textStyle="bold"></com.google.android.material.textview.MaterialTextView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/alerts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Alerts"
+            android:textAlignment="center"></com.google.android.material.textview.MaterialTextView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/safety"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Safety"
+            android:textAlignment="center"
+            android:textSize="16sp"></com.google.android.material.textview.MaterialTextView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Profile"
+            android:textAlignment="center"
+            android:textSize="16sp"></com.google.android.material.textview.MaterialTextView>
     </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/ic_launcher_background_wave_down"></ImageView>
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

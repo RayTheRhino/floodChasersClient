@@ -6,24 +6,24 @@ import java.util.Date;
 import java.util.List;
 
 public class Comment {
-    @SerializedName("Id")
+    @SerializedName("id")
     public String id;
 
-    @SerializedName("Title")
+    @SerializedName("title")
     public String title;
 
-    @SerializedName("Body")
+    @SerializedName("body")
     public String body;
 
-    @SerializedName("TimeCreated")
-    public Date timeCreated;
-    @SerializedName("Comments")
+    @SerializedName("timeCreated")
+    public String timeCreated;
+    @SerializedName("comments")
     public List<Comment> commentBoundaries;
 
     public Comment() {
     }
 
-    public Comment(String id, String title, String body, Date timeCreated, List<Comment> commentBoundaries) {
+    public Comment(String id, String title, String body, String timeCreated, List<Comment> commentBoundaries) {
         this.id = id;
         this.title = title;
         this.body = body;
@@ -55,11 +55,11 @@ public class Comment {
         this.body = body;
     }
 
-    public Date getTimeCreated() {
+    public String getTimeCreated() {
         return timeCreated;
     }
 
-    public void setTimeCreated(Date timeCreated) {
+    public void setTimeCreated(String timeCreated) {
         this.timeCreated = timeCreated;
     }
 

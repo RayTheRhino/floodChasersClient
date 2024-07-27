@@ -2,7 +2,7 @@ package com.example.floodchasers.Boundaries;
 
 import com.google.gson.annotations.SerializedName;
 
-public class LearnBoundary {
+public class Learn {
     @SerializedName("urlToImage")
     public String UrlToImage;
     @SerializedName("content")

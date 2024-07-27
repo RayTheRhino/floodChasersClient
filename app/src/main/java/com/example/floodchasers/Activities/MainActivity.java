@@ -3,7 +3,6 @@ package com.example.floodchasers.Activities;
 import static com.example.floodchasers.Objects.AppConfig.SERVER_URL;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,10 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.floodchasers.Adapter.ArticlesAdapter;
 import com.example.floodchasers.Api.LearnApi;
-import com.example.floodchasers.Boundaries.LearnBoundary;
+import com.example.floodchasers.Boundaries.Learn;
 import com.example.floodchasers.R;
 import com.example.floodchasers.Views.Footer;
-import com.google.android.material.textview.MaterialTextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +35,7 @@ public class MainActivity  extends AppCompatActivity {
     private ImageView settings;
     private RecyclerView rv_newslist;
     private ArticlesAdapter articlesAdapter;
-    private ArrayList<LearnBoundary> learnBoundaries;
+    private ArrayList<Learn> learnBoundaries;
     private Footer footerView;
     private Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(SERVER_URL)
@@ -52,7 +50,7 @@ public class MainActivity  extends AppCompatActivity {
         barListeners();
         footerView.updateTextColor(footerView.getHome());
         ClickListeners();
-        learnBoundaries = new ArrayList<LearnBoundary>();
+        learnBoundaries = new ArrayList<Learn>();
         rv_newslist.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         articlesAdapter = new ArticlesAdapter(MainActivity.this,learnBoundaries);
         rv_newslist.setAdapter(articlesAdapter);
@@ -72,9 +70,9 @@ public class MainActivity  extends AppCompatActivity {
 
     public void populateArticles(){
         Log.d("TEST", "populateArticles: ");
-        learnApi.getArticles().enqueue(new Callback<List<LearnBoundary>>() {
+        learnApi.getArticles().enqueue(new Callback<List<Learn>>() {
             @Override
-            public void onResponse(Call<List<LearnBoundary>> call, Response<List<LearnBoundary>> response) {
+            public void onResponse(Call<List<Learn>> call, Response<List<Learn>> response) {
                 if(!response.isSuccessful()){
 
                     Toast.makeText(MainActivity.this, "Failed to get articles", Toast.LENGTH_SHORT).show();
@@ -86,7 +84,7 @@ public class MainActivity  extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<LearnBoundary>> call, Throwable t) {
+            public void onFailure(Call<List<Learn>> call, Throwable t) {
                 Toast.makeText(MainActivity.this, "Failed to send get articles", Toast.LENGTH_SHORT).show();
             }
         });

@@ -112,15 +112,12 @@ public class ForumActivity extends AppCompatActivity {
           public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
               if(!response.isSuccessful()){
 
-                  Toast.makeText(ForumActivity.this, "Cent get posts!", Toast.LENGTH_SHORT).show();
+                  Toast.makeText(ForumActivity.this, "Cant get posts!", Toast.LENGTH_SHORT).show();
               }
               else {
                   postArray.addAll(response.body());
                   adapter.notifyDataSetChanged();
               }
-
-
-
           }
 
           @Override

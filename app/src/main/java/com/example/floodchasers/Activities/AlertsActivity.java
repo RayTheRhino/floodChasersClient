@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.floodchasers.Adapter.AlertsAdapter;
+import com.example.floodchasers.Api.AlertsApi;
 import com.example.floodchasers.R;
 import com.example.floodchasers.Views.Footer;
 import com.google.android.material.button.MaterialButton;
@@ -28,19 +29,21 @@ public class AlertsActivity extends AppCompatActivity {
     private RecyclerView alertsRecyclerView;
     private AlertsAdapter alertsAdapter;
     private ArrayList<String> testArray;
-
+    private AlertsApi alertApi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alerts);
+        findViews();
+        barListeners();
+        ClickListeners();
+//        alertApi = r
         testArray = new ArrayList<>();
         testArray.add("Banana");
         testArray.add("Apple");
         testArray.add("Olive");
         testArray.add("Orange");
-        findViews();
-        barListeners();
-        ClickListeners();
+
     }
 
     private void ClickListeners() {
