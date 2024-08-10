@@ -100,12 +100,12 @@ public class EmergencyNumbersActivity extends AppCompatActivity {
                 startActivity(new Intent(EmergencyNumbersActivity.this, SafetyActivity.class));
             }
         });
-//        profile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(EmergencyNumbersActivity.this,);
-//            }
-//        });
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(EmergencyNumbersActivity.this,UserProfileActivity.class));
+            }
+        });
     }
 
 

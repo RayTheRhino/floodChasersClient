@@ -31,7 +31,7 @@
                 android:orientation="horizontal"
                 android:layout_weight="2">
                 <TextView
-                    android:id="@+id/comment_date"
+                    android:id="@+id/alert_headline_Tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
@@ -39,7 +39,29 @@
                     android:textSize="16sp"
                     android:layout_weight="1"/>
                 <TextView
-                    android:id="@+id/comment_title"
+                    android:id="@+id/alert_time_created_Tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="2">
+                <TextView
+                    android:id="@+id/alert_severity_Tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:id="@+id/alert_area_Tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
@@ -49,7 +71,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/comment_content"
+                android:id="@+id/alert_description_Tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"

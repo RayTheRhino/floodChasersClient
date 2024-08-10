@@ -72,11 +72,11 @@ public class StrongWaterActivity extends AppCompatActivity {
                 startActivity(new Intent(StrongWaterActivity.this, SafetyActivity.class));
             }
         });
-//        profile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(MenuActivity.this, EmergencyNumbersActivity.class));
-//            }
-//        });
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(StrongWaterActivity.this, UserProfileActivity.class));
+            }
+        });
     }
 }

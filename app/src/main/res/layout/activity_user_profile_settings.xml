@@ -8,7 +8,7 @@
     android:layout_margin="20dp"
     android:background="@drawable/ic_launcher_background_wave_up"
     android:orientation="vertical"
-    tools:context=".Activities.UserSettingsActivity">
+    tools:context=".Activities.UserProfileActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -131,9 +131,7 @@
             android:layout_weight="1"
             android:text="Forums"
             android:textAlignment="center"
-            android:textColor="@color/primary_color"
-            android:textSize="16sp"
-            android:textStyle="bold"></com.google.android.material.textview.MaterialTextView>
+            android:textSize="16sp"></com.google.android.material.textview.MaterialTextView>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/alerts"
@@ -158,6 +156,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Profile"
+            android:textColor="@color/primary_color"
+            android:textStyle="bold"
             android:textAlignment="center"
             android:textSize="16sp"></com.google.android.material.textview.MaterialTextView>
     </LinearLayout>

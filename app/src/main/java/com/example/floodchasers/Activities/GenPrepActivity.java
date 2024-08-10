@@ -21,10 +21,10 @@ public class GenPrepActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emergency_gen_prep);
         findViews();
-        ClickListeners();
+        BarListeners();
     }
 
-    private void ClickListeners() {
+    private void BarListeners() {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,12 +49,12 @@ public class GenPrepActivity extends AppCompatActivity {
                 startActivity(new Intent(GenPrepActivity.this, SafetyActivity.class));
             }
         });
-//        profile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(CommentActivity.this, EmergencyNumbersActivity.class));
-//            }
-//        });
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(GenPrepActivity.this, UserProfileActivity.class));
+            }
+        });
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

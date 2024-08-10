@@ -112,12 +112,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
-
+                android:hint="Please enter locations you`de like to get alerts for."
                 android:background="@drawable/edit_text"
                 android:layout_margin="5dp" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/signIn_login_BTN"
+                android:id="@+id/Enter_location_BTN"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAllCaps="false"

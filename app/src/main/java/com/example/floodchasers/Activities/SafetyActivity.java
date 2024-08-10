@@ -68,6 +68,9 @@ public class SafetyActivity extends AppCompatActivity {
         footerView.setAlertsButtonClickListener(v ->
                 startActivity(new Intent(SafetyActivity.this, AlertsActivity.class))
         );
+        footerView.setProfileButtonClickListener(view ->
+                startActivity(new Intent(SafetyActivity.this, UserProfileActivity.class))
+        );
     }
 
     private void findViews() {

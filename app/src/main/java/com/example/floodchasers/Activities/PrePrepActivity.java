@@ -73,11 +73,11 @@ public class PrePrepActivity extends AppCompatActivity {
                 startActivity(new Intent(PrePrepActivity.this, SafetyActivity.class));
             }
         });
-//        profile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(MenuActivity.this, EmergencyNumbersActivity.class));
-//            }
-//        });
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(PrePrepActivity.this, UserProfileActivity.class));
+            }
+        });
     }
 }

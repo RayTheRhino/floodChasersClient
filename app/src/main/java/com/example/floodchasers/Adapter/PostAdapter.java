@@ -45,9 +45,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             intent.putExtra("POST_ID", id);
             context.startActivity(intent);
         });
-
     }
-
 
     @Override
     public int getItemCount() {

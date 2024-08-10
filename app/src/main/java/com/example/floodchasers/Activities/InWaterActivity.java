@@ -22,10 +22,50 @@ public class InWaterActivity  extends AppCompatActivity {
         setContentView(R.layout.activity_emergency_in_water);
         findViews();
         ClickListeners();
+        BarListeners();
     }
 
 
     private void ClickListeners() {
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(InWaterActivity.this, UserSettingsActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+    private void BarListeners() {
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(InWaterActivity.this,MainActivity.class));
+            }
+        });
+        forums.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(InWaterActivity.this,ForumActivity.class));
+            }
+        });
+        alerts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(InWaterActivity.this,AlertsActivity.class));
+            }
+        });
+        safety.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(InWaterActivity.this, SafetyActivity.class));
+            }
+        });
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(InWaterActivity.this, UserProfileActivity.class));
+            }
+        });
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

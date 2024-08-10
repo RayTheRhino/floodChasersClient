@@ -103,6 +103,9 @@ public class MainActivity  extends AppCompatActivity {
         footerView.setAlertsButtonClickListener(view ->
                 startActivity(new Intent(MainActivity.this, AlertsActivity.class))
         );
+        footerView.setProfileButtonClickListener(view ->
+                startActivity(new Intent(MainActivity.this, UserProfileActivity.class))
+        );
     }
     private void findViews() {
         username = findViewById(R.id.username);

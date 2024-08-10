@@ -61,12 +61,12 @@ public class MapActivity extends AppCompatActivity {
                 startActivity(new Intent(MapActivity.this, SafetyActivity.class));
             }
         });
-//        profile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(MapActivity.this, EmergencyNumbersActivity.class));
-//            }
-//        });
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MapActivity.this, UserProfileActivity.class));
+            }
+        });
     }
 
 }

@@ -53,12 +53,12 @@ public class EmergencyInfoActivity extends AppCompatActivity {
                 startActivity(new Intent(EmergencyInfoActivity.this, SafetyActivity.class));
             }
         });
-//        profile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(EmergencyInfoActivity.this, UserSettingsActivity.class));
-//            }
-//        });
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(EmergencyInfoActivity.this, UserProfileActivity.class));
+            }
+        });
     }
 
     private void ClickListeners() {

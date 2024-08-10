@@ -42,7 +42,7 @@ public class CommentActivity extends AppCompatActivity {
     private MaterialTextView TV_comment, home, forums, alerts, safety, profile;
     private RecyclerView recyclerView;
     private Button BTN_add_comment;
-    private EditText comment_title_EDT;
+    private EditText comment_title_EDT,comment_body_Edt;
     private MaterialButton Add_Meta_BTN, Add_Comment_BTN;
     private LinearLayout lay_add_comment;
     private Retrofit retrofit = new Retrofit.Builder()
@@ -88,7 +88,7 @@ public class CommentActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String title = comment_title_EDT.getText().toString();
-                String body = comment_body_LBL.getText().toString();
+                String body = comment_body_Edt.getText().toString();
                 createComment(title, body);
             }
         });
@@ -133,6 +133,9 @@ public class CommentActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Toast.makeText(CommentActivity.this, "Comment Created Succesfully", Toast.LENGTH_SHORT).show();
                     Post post = response.body();
+                    //todo:might cuse truble
+                    comment_body_Edt.setText("");
+                    comment_title_EDT.setText("");
                     commentArray.clear();
                     commentArray.addAll(post.comments);
                     adapter.notifyDataSetChanged();
@@ -157,6 +160,7 @@ public class CommentActivity extends AppCompatActivity {
         comment_title_LBL = findViewById(R.id.comment_title_LBL);
         comment_title_EDT = findViewById(R.id.comment_title_EDT);
         comment_body_LBL = findViewById(R.id.comment_body_LBL);
+        comment_body_Edt = findViewById(R.id.comment_body_Edt);
         Add_Meta_BTN = findViewById(R.id.Add_Meta_BTN);
         Add_Comment_BTN = findViewById(R.id.Add_Comment_BTN);
         home = findViewById(R.id.home);
@@ -197,11 +201,11 @@ public class CommentActivity extends AppCompatActivity {
                 startActivity(new Intent(CommentActivity.this, SafetyActivity.class));
             }
         });
-//        profile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(CommentActivity.this, EmergencyNumbersActivity.class));
-//            }
-//        });
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(CommentActivity.this, UserProfileActivity.class));
+            }
+        });
     }
 }

@@ -18,10 +18,9 @@ import com.google.android.material.button.MaterialButton;
 import java.util.ArrayList;
 
 public class UserSettingsActivity extends AppCompatActivity {
-    private TextView username, TV_profile_username, Tv_profile_status;
+    private TextView username;
     private EditText EDT_profile_status;
-    private ImageView settings, profile_IMV_user_profile;
-    private MaterialButton Add_Meta_BTN, Add_status_BTN;
+    private ImageView settings;
     private Footer footerView;
     private Spinner Sp_update_timing_spinner;
 
@@ -50,13 +49,7 @@ public class UserSettingsActivity extends AppCompatActivity {
 
     private void findViews() {
         username = findViewById(R.id.username);
-        TV_profile_username = findViewById(R.id.TV_profile_username);
-        Tv_profile_status = findViewById(R.id.Tv_profile_status);
-        EDT_profile_status = findViewById(R.id.EDT_profile_status);
         settings = findViewById(R.id.settings);
-        profile_IMV_user_profile = findViewById(R.id.profile_IMV_user_profile);
-        Add_Meta_BTN = findViewById(R.id.Add_Meta_BTN);
-        Add_status_BTN = findViewById(R.id.Add_status_BTN);
         footerView = findViewById(R.id.footerView);
         Sp_update_timing_spinner = findViewById(R.id.Sp_update_timing_spinner);
     }
@@ -82,6 +75,9 @@ public class UserSettingsActivity extends AppCompatActivity {
         );
         footerView.setAlertsButtonClickListener(v ->
                 startActivity(new Intent(UserSettingsActivity.this, AlertsActivity.class))
+        );
+        footerView.setProfileButtonClickListener(v->
+                startActivity(new Intent(UserSettingsActivity.this, UserProfileActivity.class))
         );
     }
 

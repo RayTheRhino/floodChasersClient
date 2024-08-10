@@ -1,5 +1,7 @@
 package com.example.floodchasers.Activities;
 
+import static com.example.floodchasers.Objects.AppConfig.SERVER_URL;
+
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
@@ -8,14 +10,28 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.floodchasers.Adapter.AlertsAdapter;
+import com.example.floodchasers.Api.AlertsApi;
+import com.example.floodchasers.Objects.Alert;
 import com.example.floodchasers.R;
 import com.example.floodchasers.Views.Footer;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textview.MaterialTextView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AlertNotificationActivity extends AppCompatActivity {
     private TextView username, alertsTitleTextView, TV_set_alert, TV_update_timing, tv_choose_alert;
@@ -23,16 +39,23 @@ public class AlertNotificationActivity extends AppCompatActivity {
     private EditText EDt_choose_alert;
     private ToggleButton TB_set_alert;
     private Spinner Sp_update_timing_spinner;
-    private MaterialButton signIn_login_BTN;
+    private MaterialButton Enter_location_BTN;
     private MaterialTextView home,forums,alerts,safety,profile;
-
+    private RecyclerView alertsRecyclerView;
+    private AlertsAdapter alertsAdapter;
+    private ArrayList<Alert> alertArray = new ArrayList<>();
+    private AlertsApi alertApi;
+    private Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(SERVER_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alerts_notifications);
         findViews();
-        Intent intent = getIntent();
+        alertApi = retrofit.create(AlertsApi.class);
         ClickListeners();
 
     }
@@ -43,6 +66,32 @@ public class AlertNotificationActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(AlertNotificationActivity.this, UserSettingsActivity.class);
                 startActivity(intent);
+            }
+        });
+        Enter_location_BTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+    }
+    private void GetAlertsByLocation(String area){
+        alertApi.GetAlertsByArea(area).enqueue(new Callback<List<Alert>>() {
+            @Override
+            public void onResponse(Call<List<Alert>> call, Response<List<Alert>> response) {
+                if(!response.isSuccessful()){
+                    Toast.makeText(AlertNotificationActivity.this, "response of area is not successful", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(AlertNotificationActivity.this, "response of area is  successful", Toast.LENGTH_SHORT).show();
+                    alertArray.addAll(response.body());
+                    //TODO: ask or it might be needed to display on a different page
+                    alertsAdapter = new AlertsAdapter(AlertNotificationActivity.this,alertArray);
+                    alertsRecyclerView.setAdapter(alertsAdapter);
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Alert>> call, Throwable t) {
+                Toast.makeText(AlertNotificationActivity.this, "request of area is bad!", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -62,7 +111,7 @@ public class AlertNotificationActivity extends AppCompatActivity {
         EDt_choose_alert = findViewById(R.id.EDt_choose_alert);
         TB_set_alert = findViewById(R.id.TB_set_alert);
         Sp_update_timing_spinner = findViewById(R.id.Sp_update_timing_spinner);
-        signIn_login_BTN = findViewById(R.id.signIn_login_BTN) ;
+        Enter_location_BTN = findViewById(R.id.Enter_location_BTN) ;
     }
 
     private void barListeners() {
@@ -90,12 +139,12 @@ public class AlertNotificationActivity extends AppCompatActivity {
                 startActivity(new Intent(AlertNotificationActivity.this, SafetyActivity.class));
             }
         });
-//        profile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(EmergencyInfoActivity.this, UserSettingsActivity.class));
-//            }
-//        });
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AlertNotificationActivity.this, UserProfileActivity.class));
+            }
+        });
     }
 }
 

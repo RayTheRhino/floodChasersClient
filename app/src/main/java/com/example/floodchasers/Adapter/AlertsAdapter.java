@@ -14,17 +14,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.floodchasers.Activities.CommentActivity;
 import com.example.floodchasers.Activities.MapActivity;
+import com.example.floodchasers.Objects.Alert;
 import com.example.floodchasers.R;
 
 import java.util.ArrayList;
 
 public class AlertsAdapter extends RecyclerView.Adapter<AlertsAdapter.ViewHolder> {
 
-    private ArrayList<String> mData;
+    private ArrayList<Alert> mData;
     private Context mContext;
 
 
-    public AlertsAdapter(Context context, ArrayList<String> data) {
+    public AlertsAdapter(Context context, ArrayList<Alert> data) {
         this.mData = data;
         this.mContext = context;
     }
@@ -38,13 +39,17 @@ public class AlertsAdapter extends RecyclerView.Adapter<AlertsAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull AlertsAdapter.ViewHolder holder, int position) {
-        String text = mData.get(position);
-//        holder.textView.setText(text);
-        holder.cardView.setOnClickListener(v -> {
-            Intent intent = new Intent(mContext, MapActivity.class);
-//            intent.putExtra("ITEM_TEXT", text);
-            mContext.startActivity(intent);
-        });
+        Alert currentAlert = mData.get(position);
+
+        holder.alert_headline_Tv.setText(currentAlert.getHeadline());
+        holder.alert_description_Tv.setText(currentAlert.getDescription());
+        holder.alert_area_Tv.setText(currentAlert.getAreas());
+        holder.alert_time_created_Tv.setText(currentAlert.getTimeCreated().toString());
+         /* this is an on click that can move you to another activity */
+//        holder.cardView.setOnClickListener(v -> {
+//            Intent intent = new Intent(mContext, MapActivity.class);
+//            mContext.startActivity(intent);
+//        });
     }
 
     @Override
@@ -54,17 +59,16 @@ public class AlertsAdapter extends RecyclerView.Adapter<AlertsAdapter.ViewHolder
 
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView forum_title, forum_content,forum_author,forum_published_at;
-        public ImageView forum_image_view;
+        public TextView alert_headline_Tv, alert_time_created_Tv,alert_severity_Tv,alert_area_Tv,alert_description_Tv;
         public CardView cardView;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            forum_image_view = itemView.findViewById(R.id.forum_image_view);
-            forum_title = itemView.findViewById(R.id.forum_title);
-            forum_content = itemView.findViewById(R.id.forum_content);
-            forum_author = itemView.findViewById(R.id.forum_author);
-            forum_published_at= itemView.findViewById(R.id.forum_published_at);
+            alert_headline_Tv = itemView.findViewById(R.id.alert_headline_Tv);
+            alert_time_created_Tv = itemView.findViewById(R.id.alert_time_created_Tv);
+            alert_severity_Tv = itemView.findViewById(R.id.alert_severity_Tv);
+            alert_area_Tv = itemView.findViewById(R.id.alert_area_Tv);
+            alert_description_Tv= itemView.findViewById(R.id.alert_description_Tv);
             cardView = itemView.findViewById(R.id.alert_card);
         }
     }

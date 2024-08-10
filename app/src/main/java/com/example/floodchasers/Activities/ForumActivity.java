@@ -65,16 +65,6 @@ public class ForumActivity extends AppCompatActivity {
         RV_forum.setAdapter(adapter);
         RV_forum.setHasFixedSize(true);
         GetAllPosts();
-
-
-//        adapter.setOnItemClickListener(new ForumAdapter.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(Contact contact) {
-//                Intent intent = new Intent(ForumActivity.this, AddEditContactActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-
     }
 
     private void ClickListeners() {
@@ -102,6 +92,7 @@ public class ForumActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ForumActivity.this, UserSettingsActivity.class);
                 startActivity(intent);
+
             }
         });
     }
@@ -137,6 +128,8 @@ public class ForumActivity extends AppCompatActivity {
             public void onResponse(Call<Post> call, Response<Post> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     Toast.makeText(ForumActivity.this, "Post created successfully", Toast.LENGTH_SHORT).show();
+                    comment_title_EDT.setText("");
+                    comment_body_Edt.setText("");
                     GetAllPosts();
                 } else {
                     Toast.makeText(ForumActivity.this, "Failed to create post", Toast.LENGTH_SHORT).show();
@@ -180,7 +173,7 @@ public class ForumActivity extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ForumActivity.this, EmergencyNumbersActivity.class));
+                startActivity(new Intent(ForumActivity.this, UserProfileActivity.class));
             }
         });
     }
