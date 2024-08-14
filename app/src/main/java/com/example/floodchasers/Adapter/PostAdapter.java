@@ -39,10 +39,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull PostAdapter.ViewHolder holder, int position) {
         holder.bind(posts.get(position));
+
         holder.postView.setOnClickListener(v -> {
-            String id = posts.get(position).getId();
+            Post selectedPost = posts.get(position);
+            String postId = selectedPost.getId();
+            String commentBody = selectedPost.getBody();
+
             Intent intent = new Intent(context, CommentActivity.class);
-            intent.putExtra("POST_ID", id);
+            intent.putExtra("POST_ID", postId);
+            intent.putExtra("POST_BODY",commentBody);
             context.startActivity(intent);
         });
     }

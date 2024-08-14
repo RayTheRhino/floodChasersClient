@@ -26,7 +26,7 @@
             android:layout_weight="1"
             android:textSize="16sp"
             android:textColor="@color/black"
-            android:text="Forums"/>
+            android:text="Forum"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/alerts"

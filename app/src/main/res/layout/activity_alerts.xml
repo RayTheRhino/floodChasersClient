@@ -96,7 +96,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Forums"
+            android:text="Forum"
             android:textAlignment="center"
             android:textColor="@color/primary_color"
             android:textSize="16sp"

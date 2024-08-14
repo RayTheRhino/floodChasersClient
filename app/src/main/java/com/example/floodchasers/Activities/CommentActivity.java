@@ -53,7 +53,7 @@ public class CommentActivity extends AppCompatActivity {
     private PostApi postApi;
     private CommentAdapter adapter;
     private List<Comment> commentArray = new ArrayList<>();
-    private String postId;
+    private String postId, postBody;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -172,8 +172,11 @@ public class CommentActivity extends AppCompatActivity {
         BTN_add_comment = findViewById(R.id.BTN_add_comment);
         lay_add_comment = findViewById(R.id.lay_add_comment);
         lay_add_comment.setVisibility(View.GONE);
+
         Intent intent = getIntent();
         postId = intent.getStringExtra("POST_ID");
+        postBody = intent.getStringExtra("POST_BODY");
+        TV_forum_topic.setText(postBody);
     }
 
     private void barListeners() {
