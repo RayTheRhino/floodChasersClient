@@ -50,14 +50,25 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/TV_display_location"
+        android:id="@+id/ET_phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter phone number"
+        android:inputType="phone"
+        android:padding="16dp"
+        android:textAlignment="center"
+        android:textSize="18dp"
+        android:visibility="gone"/>
+    <EditText
+        android:id="@+id/ET_display_location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
         android:text="Location will be displayed here"
         android:textAlignment="center"
         android:textSize="18dp"
-        android:visibility="gone" />
+        android:visibility="gone"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"

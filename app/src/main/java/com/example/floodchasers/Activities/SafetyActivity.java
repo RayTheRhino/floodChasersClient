@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,11 +28,12 @@ public class SafetyActivity extends AppCompatActivity {
     private TextView username, TV_Em_response_hub;
     private ImageView settings, settings_IMV_Logo;
     private MaterialButton BTN_safety_inst,BTN_curr_loc,BTN_emergency_num;
-    private EditText TV_display_location;
+    private EditText ET_display_location, ET_phone_number;
     private Footer footerView;
 
     private FusedLocationProviderClient fusedLocationClient;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
+    private static final int SMS_PERMISSION_REQUEST_CODE = 2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +64,7 @@ public class SafetyActivity extends AppCompatActivity {
         BTN_curr_loc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                requestSmsPermission();
                 getCurrentLocation();
             }
         });
@@ -94,9 +98,29 @@ public class SafetyActivity extends AppCompatActivity {
     }
 
     private void sendLocation(double latitude, double longitude) {
-        String locationMessage = "Latitude: " + latitude + ", Longitude: " + longitude;
-        TV_display_location.setText(locationMessage);
-        TV_display_location.setVisibility(View.VISIBLE);
+        String locationMessage = "SOS Send Help Location: "+"Latitude: " + latitude + ", Longitude: " + longitude;
+        ET_display_location.setText(locationMessage);
+        ET_phone_number.setVisibility(View.VISIBLE);
+
+        String phoneNumber = ET_phone_number.getText().toString();
+
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS)
+                == PackageManager.PERMISSION_GRANTED) {
+            sendSms(phoneNumber, locationMessage);
+        } else {
+            requestSmsPermission();
+        }
+    }
+    private void sendSms(String phoneNumber, String message) {
+        try {
+            SmsManager smsManager = SmsManager.getDefault();
+            smsManager.sendTextMessage(phoneNumber, null, message, null, null);
+            Toast.makeText(this, "Location sent via SMS", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(this, "SMS failed to send, check if number has been entered", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
     }
 
 
@@ -104,10 +128,26 @@ public class SafetyActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+        if (requestCode == SMS_PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                String phoneNumber = ET_phone_number.getText().toString();
+                String locationMessage = ET_display_location.getText().toString();
+                sendSms(phoneNumber, locationMessage);
+            } else {
+                Toast.makeText(this, "SMS permission denied", Toast.LENGTH_SHORT).show();
+            }
+        } else if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 getCurrentLocation();
             }
+        }
+    }
+    private void requestSmsPermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.SEND_SMS},
+                    SMS_PERMISSION_REQUEST_CODE);
         }
     }
 
@@ -138,7 +178,8 @@ public class SafetyActivity extends AppCompatActivity {
         BTN_safety_inst = findViewById(R.id.BTN_safety_inst);
         BTN_curr_loc = findViewById(R.id.BTN_curr_loc);
         BTN_emergency_num = findViewById(R.id.BTN_emergency_num);
-        TV_display_location = findViewById(R.id.TV_display_location);
+        ET_display_location = findViewById(R.id.ET_display_location);
+        ET_phone_number = findViewById(R.id.ET_phone_number);
 
         //header and footer BTNs
         settings = findViewById(R.id.settings);
