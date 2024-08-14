@@ -70,9 +70,7 @@ public class SignInActivity extends AppCompatActivity {
 
 
     private void callBackinfo(String email, String password) {
-        Call<User> call = userApi.LoggedInUser(email, password);
-
-        call.enqueue(new Callback<User>() {
+            userApi.LoggedInUser(email, password).enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if(!response.isSuccessful()){

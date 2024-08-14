@@ -1,9 +1,15 @@
 package com.example.floodchasers.Objects;
 
+import com.google.gson.annotations.SerializedName;
+
 public class User {
+    @SerializedName("userName")
     String username;
+    @SerializedName("email")
     String email;
+    @SerializedName("password")
     String password;
+    @SerializedName("id")
     String  id;
 
     public User() {

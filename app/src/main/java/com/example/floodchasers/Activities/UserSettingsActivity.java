@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,9 +22,11 @@ import java.util.ArrayList;
 
 public class UserSettingsActivity extends AppCompatActivity {
     private TextView username;
-    private EditText EDT_profile_status;
+    private EditText EDt_choose_alert;
+    private ToggleButton TB_set_alert;
     private ImageView settings;
     private Footer footerView;
+    private MaterialButton Enter_location_BTN;
     private Spinner Sp_update_timing_spinner;
 
     @Override
@@ -40,12 +45,12 @@ public class UserSettingsActivity extends AppCompatActivity {
         footerListener();
         initSpinner();
         footerView.updateTextColor(footerView.getAlerts());
-        onClick();
+        onClickListener();
 
 
     }
 
-    private void onClick() {
+    private void onClickListener() {
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,13 +58,41 @@ public class UserSettingsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
+        TB_set_alert.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    // Alerts are turned on
+                    // Add logic to enable alerts
+                    Toast.makeText(UserSettingsActivity.this, "Alerts turned on", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Alerts are turned off
+                    // Add logic to disable alerts
+                    Toast.makeText(UserSettingsActivity.this, "Alerts turned off", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        Enter_location_BTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String enteredLocation = EDt_choose_alert.getText().toString();
+                if (!enteredLocation.isEmpty()) {
+                    Toast.makeText(UserSettingsActivity.this, "Location entered: " + enteredLocation, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(UserSettingsActivity.this, "Please enter a location", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });    }
 
     private void findViews() {
         username = findViewById(R.id.username);
         settings = findViewById(R.id.settings);
         footerView = findViewById(R.id.footerView);
         Sp_update_timing_spinner = findViewById(R.id.Sp_update_timing_spinner);
+        TB_set_alert = findViewById(R.id.TB_set_alert);
+        Enter_location_BTN = findViewById(R.id.Enter_location_BTN);
+        EDt_choose_alert = findViewById(R.id.EDt_choose_alert);
     }
 
     private void initSpinner() {

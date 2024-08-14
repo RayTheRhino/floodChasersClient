@@ -42,7 +42,7 @@ public class CommentActivity extends AppCompatActivity {
     private MaterialTextView TV_comment, home, forums, alerts, safety, profile;
     private RecyclerView recyclerView;
     private Button BTN_add_comment;
-    private EditText comment_title_EDT,comment_body_Edt;
+    private EditText comment_title_EDT, comment_body_Edt;
     private MaterialButton Add_Meta_BTN, Add_Comment_BTN;
     private LinearLayout lay_add_comment;
     private Retrofit retrofit = new Retrofit.Builder()
@@ -54,6 +54,7 @@ public class CommentActivity extends AppCompatActivity {
     private CommentAdapter adapter;
     private List<Comment> commentArray = new ArrayList<>();
     private String postId, postBody;
+    List<Comment> postComments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +75,7 @@ public class CommentActivity extends AppCompatActivity {
         commentApi = retrofit.create(CommentApi.class);
         postApi = retrofit.create(PostApi.class);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new CommentAdapter(CommentActivity.this, commentArray);
+        adapter = new CommentAdapter(CommentActivity.this, postComments);
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
         //GetAllComments();
@@ -109,43 +110,23 @@ public class CommentActivity extends AppCompatActivity {
         });
     }
 
-    private void GetAllComments() {
-        commentApi.GetAllComments().enqueue(new Callback<List<Comment>>() {
-            @Override
-            public void onResponse(Call<List<Comment>> call, Response<List<Comment>> response) {
-                if (!response.isSuccessful()) {
 
-                    Toast.makeText(CommentActivity.this, "Cant get comments!", Toast.LENGTH_SHORT).show();
-                } else {
-                    commentArray.addAll(response.body());
-                    adapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Comment>> call, Throwable t) {
-                Toast.makeText(CommentActivity.this, "Cent get posts!", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-    }
     private void createComment(String title, String body) {
         Comment newComment = new Comment();
         newComment.setId(UUID.randomUUID().toString());
         newComment.setTitle(title);
         newComment.setBody(body.toString());
 
-        postApi.AddCommentToPost(newComment,postId).enqueue(new Callback<Post>() {
+        postApi.AddCommentToPost(newComment, postId).enqueue(new Callback<Post>() {
             @Override
             public void onResponse(Call<Post> call, Response<Post> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(CommentActivity.this, "Comment Created Succesfully", Toast.LENGTH_SHORT).show();
                     Post post = response.body();
-                    //todo:might cuse truble
                     comment_body_Edt.setText("");
                     comment_title_EDT.setText("");
-                    commentArray.clear();
-                    commentArray.addAll(post.comments);
+                    postComments.clear();
+                    postComments.addAll(post.comments);
                     adapter.notifyDataSetChanged();
                 } else {
                     Toast.makeText(CommentActivity.this, "Failed to create commnet", Toast.LENGTH_SHORT).show();
@@ -184,6 +165,7 @@ public class CommentActivity extends AppCompatActivity {
         Intent intent = getIntent();
         postId = intent.getStringExtra("POST_ID");
         postBody = intent.getStringExtra("POST_BODY");
+        postComments = (List<Comment>) getIntent().getSerializableExtra("POST_COMMENTS");
         TV_forum_topic.setText(postBody);
     }
 

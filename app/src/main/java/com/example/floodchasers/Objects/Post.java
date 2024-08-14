@@ -62,7 +62,7 @@ public class Post {
         this.timeCreated = timeCreated;
     }
 
-    public List<Comment> getCommentsIds() {
+    public List<Comment> getComments() {
         return comments;
     }
 

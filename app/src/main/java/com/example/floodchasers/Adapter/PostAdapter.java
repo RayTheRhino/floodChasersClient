@@ -14,10 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.floodchasers.Activities.CommentActivity;
+import com.example.floodchasers.Boundaries.Comment;
 import com.example.floodchasers.Objects.Post;
 import com.example.floodchasers.R;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.List;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
@@ -43,11 +44,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         holder.postView.setOnClickListener(v -> {
             Post selectedPost = posts.get(position);
             String postId = selectedPost.getId();
-            String commentBody = selectedPost.getBody();
+            String postBody = selectedPost.getBody();
+            List<Comment> postComments = selectedPost.getComments();
 
             Intent intent = new Intent(context, CommentActivity.class);
             intent.putExtra("POST_ID", postId);
-            intent.putExtra("POST_BODY",commentBody);
+            intent.putExtra("POST_BODY",postBody);
+            intent.putExtra("POST_COMMENTS",(Serializable) postComments);
             context.startActivity(intent);
         });
     }
