@@ -20,73 +20,73 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MenuActivity extends AppCompatActivity {
 
 
-    private TextView username;
-    private ImageView settings;
-    private MaterialTextView home, forums, alerts,safety, profile;
-    private Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl(SERVER_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build();
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        findViews();
-        barListeners();
-        ClickListeners();
-    }
-
-    private void ClickListeners() {
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MenuActivity.this, UserSettingsActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
-
-    private void barListeners() {
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this,MainActivity.class));
-            }
-        });
-        forums.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this,ForumActivity.class));
-            }
-        });
-        alerts.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this,AlertsActivity.class));
-            }
-        });
-        safety.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this, SafetyActivity.class));
-            }
-        });
-        profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this, UserProfileActivity.class));
-            }
-        });
-    }
-
-
-    private void findViews() {
-        username = findViewById(R.id.username);
-        settings = findViewById(R.id.settings);
-        home = findViewById(R.id.home);
-        forums = findViewById(R.id.forums);
-        alerts = findViewById(R.id.alerts);
-        safety = findViewById(R.id.safety);
-        profile = findViewById(R.id.profile);
-    }
+//    private TextView username;
+//    private ImageView settings;
+//    private MaterialTextView home, forums, alerts,safety, profile;
+//    private Retrofit retrofit = new Retrofit.Builder()
+//            .baseUrl(SERVER_URL)
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .build();
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_main);
+//        findViews();
+//        barListeners();
+//        ClickListeners();
+//    }
+//
+//    private void ClickListeners() {
+//        settings.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MenuActivity.this, UserSettingsActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//    }
+//
+//    private void barListeners() {
+//        home.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(MenuActivity.this,MainActivity.class));
+//            }
+//        });
+//        forums.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(MenuActivity.this,ForumActivity.class));
+//            }
+//        });
+//        alerts.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(MenuActivity.this,AlertsActivity.class));
+//            }
+//        });
+//        safety.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(MenuActivity.this, SafetyActivity.class));
+//            }
+//        });
+//        profile.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(MenuActivity.this, UserProfileActivity.class));
+//            }
+//        });
+//    }
+//
+//
+//    private void findViews() {
+//        username = findViewById(R.id.username);
+//        settings = findViewById(R.id.settings);
+//        home = findViewById(R.id.home);
+//        forums = findViewById(R.id.forums);
+//        alerts = findViewById(R.id.alerts);
+//        safety = findViewById(R.id.safety);
+//        profile = findViewById(R.id.profile);
+//    }
 }

@@ -21,6 +21,14 @@ public class InWaterActivity  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emergency_in_water);
         findViews();
+
+        Intent intent = getIntent();
+        String usernameValue = intent.getStringExtra("username");
+
+        if (usernameValue != null) {
+            username.setText(usernameValue);
+        }
+
         ClickListeners();
         BarListeners();
     }

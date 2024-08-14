@@ -76,12 +76,14 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if(!response.isSuccessful()){
-
                     Toast.makeText(SignInActivity.this, "Error!", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     Toast.makeText(SignInActivity.this, "User signed In successfully", Toast.LENGTH_SHORT).show();
+                    User user = response.body();
+                    String username = user.getUsername();
                     Intent intent = new Intent(SignInActivity.this, MainActivity.class);
+                    intent.putExtra("username",username);
                     startActivity(intent);
                 }
             }

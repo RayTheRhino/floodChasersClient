@@ -29,6 +29,14 @@ public class UserSettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alerts_notifications);
         findViews();
+
+        Intent intent = getIntent();
+        String usernameValue = intent.getStringExtra("username");
+
+        if (usernameValue != null) {
+            username.setText(usernameValue);
+        }
+
         footerListener();
         initSpinner();
         footerView.updateTextColor(footerView.getAlerts());

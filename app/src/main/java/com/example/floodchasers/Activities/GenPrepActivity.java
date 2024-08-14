@@ -20,6 +20,14 @@ public class GenPrepActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emergency_gen_prep);
+
+        Intent intent = getIntent();
+        String usernameValue = intent.getStringExtra("username");
+
+        if (usernameValue != null) {
+            username.setText(usernameValue);
+        }
+
         findViews();
         BarListeners();
     }

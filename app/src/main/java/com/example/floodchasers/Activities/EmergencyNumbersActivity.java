@@ -24,6 +24,14 @@ public class EmergencyNumbersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emergency_numbers);
         findViews();
+
+        Intent intent = getIntent();
+        String usernameValue = intent.getStringExtra("username");
+
+        if (usernameValue != null) {
+            username.setText(usernameValue);
+        }
+
         barListeners();
         DialActions();
         ClickListeners();

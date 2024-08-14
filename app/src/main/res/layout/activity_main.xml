@@ -14,7 +14,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="40dp">
 <!--        <ImageView-->
 <!--            android:layout_width="48dp"-->
 <!--            android:layout_height="48dp"-->
@@ -36,13 +37,6 @@
             android:layout_marginTop="10dp"
             android:src="@drawable/cogwheel" />
     </LinearLayout>
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="This is a sample post content. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-        android:padding="16dp" />
 
     <LinearLayout
         android:layout_width="match_parent"

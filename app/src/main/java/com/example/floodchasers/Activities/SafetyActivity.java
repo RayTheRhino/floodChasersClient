@@ -39,6 +39,14 @@ public class SafetyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_safety);
         findViews();
+
+        Intent intent = getIntent();
+        String usernameValue = intent.getStringExtra("username");
+
+        if (usernameValue != null) {
+            username.setText(usernameValue);
+        }
+
         barListeners();
         ClickListeners();
         footerView.updateTextColor(footerView.getSafety());
@@ -107,6 +115,7 @@ public class SafetyActivity extends AppCompatActivity {
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS)
                 == PackageManager.PERMISSION_GRANTED) {
+            ET_phone_number.setText("");
             sendSms(phoneNumber, locationMessage);
         } else {
             requestSmsPermission();

@@ -55,6 +55,14 @@ public class AlertNotificationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alerts_notifications);
         findViews();
+
+        Intent intent = getIntent();
+        String usernameValue = intent.getStringExtra("username");
+
+        if (usernameValue != null) {
+            username.setText(usernameValue);
+        }
+
         alertApi = retrofit.create(AlertsApi.class);
         ClickListeners();
 

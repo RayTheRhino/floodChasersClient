@@ -47,6 +47,16 @@ public class MainActivity  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViews();
+
+        Intent intent = getIntent();
+        String usernameValue = intent.getStringExtra("username");
+
+        if(usernameValue != null && !usernameValue.isEmpty()){
+            username.setText(usernameValue);
+        }else{
+            username.setText("Guest");
+        }
+
         barListeners();
         footerView.updateTextColor(footerView.getHome());
         ClickListeners();
@@ -69,7 +79,6 @@ public class MainActivity  extends AppCompatActivity {
     }
 
     public void populateArticles(){
-        Log.d("TEST", "populateArticles: ");
         learnApi.getArticles().enqueue(new Callback<List<Learn>>() {
             @Override
             public void onResponse(Call<List<Learn>> call, Response<List<Learn>> response) {
@@ -92,19 +101,19 @@ public class MainActivity  extends AppCompatActivity {
 
     private void barListeners() {
         footerView.setHomeButtonClickListener(view ->
-                startActivity(new Intent(MainActivity.this,MainActivity.class))
+                startActivity(new Intent(MainActivity.this,MainActivity.class).putExtra("username",username.getText().toString()))
         );
         footerView.setForumsButtonClickListener(view ->
-                startActivity(new Intent(MainActivity.this, ForumActivity.class))
+                startActivity(new Intent(MainActivity.this, ForumActivity.class).putExtra("username",username.getText().toString()))
         );
         footerView.setSafetyButtonClickListener(view ->
-                startActivity(new Intent(MainActivity.this, SafetyActivity.class))
+                startActivity(new Intent(MainActivity.this, SafetyActivity.class).putExtra("username",username.getText().toString()))
         );
         footerView.setAlertsButtonClickListener(view ->
-                startActivity(new Intent(MainActivity.this, AlertsActivity.class))
+                startActivity(new Intent(MainActivity.this, AlertsActivity.class).putExtra("username",username.getText().toString()))
         );
         footerView.setProfileButtonClickListener(view ->
-                startActivity(new Intent(MainActivity.this, UserProfileActivity.class))
+                startActivity(new Intent(MainActivity.this, UserProfileActivity.class).putExtra("username",username.getText().toString()))
         );
     }
     private void findViews() {
