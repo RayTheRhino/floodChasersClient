@@ -67,6 +67,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:19.0.0'
     implementation 'com.google.android.gms:play-services-location:21.3.0'
     implementation 'com.karumi:dexter:6.2.3'
+    implementation 'androidx.work:work-runtime:2.7.1'
 
 
 }

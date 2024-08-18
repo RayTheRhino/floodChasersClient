@@ -2,10 +2,19 @@ package com.example.floodchasers.Activities;
 
 import static com.example.floodchasers.Objects.AppConfig.SERVER_URL;
 
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.media.Image;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -14,10 +23,14 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.floodchasers.Adapter.AlertsAdapter;
 import com.example.floodchasers.Api.AlertsApi;
+import com.example.floodchasers.Classes.AlertReceiver;
 import com.example.floodchasers.Objects.Alert;
 import com.example.floodchasers.R;
 import com.example.floodchasers.Views.Footer;
@@ -25,6 +38,7 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textview.MaterialTextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import retrofit2.Call;
@@ -49,13 +63,15 @@ public class AlertNotificationActivity extends AppCompatActivity {
             .baseUrl(SERVER_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build();
+    private SharedPreferences sharedPrefAlertNotification;
+    private NotificationManager notificationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alerts_notifications);
         findViews();
-
+        initSpinner();
         Intent intent = getIntent();
         String usernameValue = intent.getStringExtra("username");
 
@@ -66,8 +82,54 @@ public class AlertNotificationActivity extends AppCompatActivity {
         alertApi = retrofit.create(AlertsApi.class);
         ClickListeners();
 
+        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+           NotificationChannel channel = new NotificationChannel(
+                   "FloodAlertsChannel",
+                   "Flood Alerts",
+                   NotificationManager.IMPORTANCE_HIGH
+           );
+           channel.setDescription("Channel for the flood alerts");
+           notificationManager.createNotificationChannel(channel);
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(AlertNotificationActivity.this, android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(AlertNotificationActivity.this, new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, 101);
+            }
+        }
+
+    }
+    private long getDelayForFrequency(String frequency) {
+        switch (frequency.toLowerCase()) {
+            case "daily":
+                return 30 * 1000; // 30 seconds
+            case "weekly":
+                return 2 * 60 * 1000; // 2 minutes
+            case "monthly":
+                return 5 * 60 * 1000; // 5 minutes
+            default:
+                return 30 * 1000; // Default to 30 seconds if frequency is not recognized
+        }
+    }
+    private void initSpinner() {
+        ArrayList<String> datesRange = new ArrayList<>();
+        datesRange.add("day");
+        datesRange.add("week");
+        datesRange.add("month");
+        Sp_update_timing_spinner.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,datesRange));
+        String hey = Sp_update_timing_spinner.getSelectedItem().toString();
+
     }
 
+    private void scheduleNotification(String location, long delay) {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlertReceiver.class);
+        intent.putExtra("location", location);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        long triggerTime = System.currentTimeMillis() + delay;
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, triggerTime, pendingIntent);
+    }
     private void ClickListeners() {
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,29 +141,45 @@ public class AlertNotificationActivity extends AppCompatActivity {
         Enter_location_BTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String Locations = EDt_choose_alert.getText().toString().trim();
+                SharedPreferences.Editor editor = sharedPrefAlertNotification.edit();
+                editor.putString("Locations",Locations).apply();
+                Toast.makeText(AlertNotificationActivity.this, "Location Saved: " + Locations, Toast.LENGTH_SHORT).show();
 
+                // Get the selected frequency from the spinner
+                String frequency = Sp_update_timing_spinner.getSelectedItem().toString();
+
+                // Schedule a notification based on the selected frequency
+                long delay = getDelayForFrequency(frequency);
+                scheduleNotification(Locations, delay);
+            }
+        });
+
+        boolean isAlertChecked = sharedPrefAlertNotification.getBoolean("toggle_state", false);
+        TB_set_alert.setChecked(isAlertChecked);
+        TB_set_alert.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            sharedPrefAlertNotification.edit().putBoolean("IsAlertOn", isChecked).apply();
+            if (isChecked) {
+                sendPushNotification("Alert Enabled", "You have turned on flood alerts.");
+            }else{
+                notificationManager.cancelAll();
             }
         });
     }
-    private void GetAlertsByLocation(String area){
-        alertApi.GetAlertsByArea(area).enqueue(new Callback<List<Alert>>() {
-            @Override
-            public void onResponse(Call<List<Alert>> call, Response<List<Alert>> response) {
-                if(!response.isSuccessful()){
-                    Toast.makeText(AlertNotificationActivity.this, "response of area is not successful", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(AlertNotificationActivity.this, "response of area is  successful", Toast.LENGTH_SHORT).show();
-                    alertArray.addAll(response.body());
-                    //TODO: ask or it might be needed to display on a different page
-                    alertsAdapter = new AlertsAdapter(AlertNotificationActivity.this,alertArray);
-                    alertsRecyclerView.setAdapter(alertsAdapter);
-                }
-            }
-            @Override
-            public void onFailure(Call<List<Alert>> call, Throwable t) {
-                Toast.makeText(AlertNotificationActivity.this, "request of area is bad!", Toast.LENGTH_SHORT).show();
-            }
-        });
+    private void sendPushNotification(String title, String message) {
+        Intent intent = new Intent(this, AlertsActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "FloodAlertsChannel")
+//                .setSmallIcon(R.drawable.ic_launcher_foreground) // Replace with your app's icon
+                .setContentTitle(title)
+                .setContentText(message)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true);
+
+        notificationManager.notify(1, builder.build());
     }
 
     private void findViews() {
@@ -120,6 +198,7 @@ public class AlertNotificationActivity extends AppCompatActivity {
         TB_set_alert = findViewById(R.id.TB_set_alert);
         Sp_update_timing_spinner = findViewById(R.id.Sp_update_timing_spinner);
         Enter_location_BTN = findViewById(R.id.Enter_location_BTN) ;
+        sharedPrefAlertNotification =  getSharedPreferences("AlertNotification", Context.MODE_PRIVATE);
     }
 
     private void barListeners() {
@@ -154,5 +233,7 @@ public class AlertNotificationActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }
 

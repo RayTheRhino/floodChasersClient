@@ -67,14 +67,6 @@
             android:hint="Enter Location"
             android:padding="16dp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/BTN_enter_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:cornerRadius="5dp"
-            android:backgroundTint="@color/primary_color"
-            android:text="->" />
     </LinearLayout>
 
     <LinearLayout

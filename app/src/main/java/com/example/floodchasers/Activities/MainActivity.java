@@ -4,7 +4,6 @@ import static com.example.floodchasers.Objects.AppConfig.SERVER_URL;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;

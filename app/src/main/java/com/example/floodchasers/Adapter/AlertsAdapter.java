@@ -46,10 +46,10 @@ public class AlertsAdapter extends RecyclerView.Adapter<AlertsAdapter.ViewHolder
         holder.alert_area_Tv.setText(currentAlert.getAreas());
         holder.alert_time_created_Tv.setText(currentAlert.getTimeCreated().toString());
          /* this is an on click that can move you to another activity */
-//        holder.cardView.setOnClickListener(v -> {
-//            Intent intent = new Intent(mContext, MapActivity.class);
-//            mContext.startActivity(intent);
-//        });
+        holder.cardView.setOnClickListener(v -> {
+            Intent intent = new Intent(mContext, MapActivity.class);
+            mContext.startActivity(intent);
+        });
     }
 
     @Override

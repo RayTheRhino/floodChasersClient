@@ -4,6 +4,8 @@ import static com.example.floodchasers.Objects.AppConfig.SERVER_URL;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -25,6 +27,8 @@ import com.google.android.material.textview.MaterialTextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,7 +39,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class AlertsActivity extends AppCompatActivity {
     private TextView username, alertsTitleTextView;
     private EditText ET_set_location;
-    private MaterialButton BTN_enter_location;
     private MaterialTextView home, forums, alerts, safety, profile;
     private ImageView settings;
     private RecyclerView alertsRecyclerView;
@@ -74,6 +77,33 @@ public class AlertsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        ET_set_location.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s != null && s.toString().isEmpty())
+                    alertsRecyclerView.setAdapter(alertsAdapter);
+                else
+                    filter(s.toString());
+            }
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+
+    }
+    private void filter(String text) {
+
+        ArrayList<Alert> searchedList = alertArray.stream()
+                .filter(alert ->alert.getAreas().toLowerCase().equals(text.toLowerCase())).collect(Collectors.toCollection(ArrayList::new));
+        AlertsAdapter searchedAdapter = new AlertsAdapter(this,searchedList);
+        alertsRecyclerView.setAdapter(searchedAdapter);
+
+
+        // Update the adapter with the filtered list
+//        alertsAdapter.updateList(filteredList);
     }
 
     private void barListeners() {
@@ -143,7 +173,6 @@ public class AlertsActivity extends AppCompatActivity {
         ET_set_location = findViewById(R.id.ET_set_location);
         alertsRecyclerView = findViewById(R.id.alertsRecyclerView);
         settings = findViewById(R.id.settings);
-        BTN_enter_location = findViewById(R.id.BTN_enter_location);
         alertsRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         alertsAdapter = new AlertsAdapter(AlertsActivity.this, alertArray);
         alertsRecyclerView.setAdapter(alertsAdapter);
