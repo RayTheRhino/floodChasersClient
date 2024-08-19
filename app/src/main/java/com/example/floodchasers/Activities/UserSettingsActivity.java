@@ -132,10 +132,8 @@ public class UserSettingsActivity extends AppCompatActivity {
                 editor.putString("Locations",Locations).apply();
                 Toast.makeText(UserSettingsActivity.this, "Location Saved: " + Locations, Toast.LENGTH_SHORT).show();
 
-                // Get the selected frequency from the spinner
                 String frequency = Sp_update_timing_spinner.getSelectedItem().toString();
 
-                // Schedule a notification based on the selected frequency
                 long delay = getDelayForFrequency(frequency);
                 scheduleNotification(Locations, delay);
             }
@@ -158,7 +156,7 @@ public class UserSettingsActivity extends AppCompatActivity {
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "FloodAlertsChannel")
-                .setSmallIcon(R.drawable.alert) // Replace with your app's icon
+                .setSmallIcon(R.drawable.alert)
                 .setContentTitle(title)
                 .setContentText(message)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)

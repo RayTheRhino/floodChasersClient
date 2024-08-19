@@ -17,11 +17,11 @@ public class Alert {
     private Date timeUpdated;
     @SerializedName("areas")
     private String areas;
-    @SerializedName("severity")
+    @SerializedName("serverity")
     private String severity;
     @SerializedName("lat")
     private double lat;
-    @SerializedName("lang")
+    @SerializedName("long")
     private double lang;
 
     public Alert() {

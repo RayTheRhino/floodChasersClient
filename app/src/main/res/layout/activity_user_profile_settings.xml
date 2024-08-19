@@ -60,27 +60,6 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/Tv_profile_status"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint=" Display Status:"
-        android:padding="10dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/EDT_profile_status"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@drawable/edit_text"
-            android:hint="  Write a status" />
-
-    </LinearLayout>
 
 
     <!--   Button section       -->
@@ -97,16 +76,6 @@
             android:layout_weight="1"
             android:backgroundTint="@color/primary_color"
             android:text="Upload Image"
-            app:cornerRadius="5dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/Add_status_BTN"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/primary_color"
-            android:text="Add Status"
             app:cornerRadius="5dp" />
     </LinearLayout>
 

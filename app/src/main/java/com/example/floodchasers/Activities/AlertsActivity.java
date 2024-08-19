@@ -102,7 +102,6 @@ public class AlertsActivity extends AppCompatActivity {
         alertsRecyclerView.setAdapter(searchedAdapter);
 
 
-        // Update the adapter with the filtered list
 //        alertsAdapter.updateList(filteredList);
     }
 

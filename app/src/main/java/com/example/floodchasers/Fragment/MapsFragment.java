@@ -18,39 +18,47 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsFragment extends Fragment {
-
-
+    private static final String ARG_LAT = "lat";
+    private static final String ARG_LNG = "lng";
+    private double latitude;
+    private double longitude;
+    public static MapsFragment newInstance(double lat, double lng) {
+        MapsFragment fragment = new MapsFragment();
+        Bundle args = new Bundle();
+        args.putDouble(ARG_LAT, lat);
+        args.putDouble(ARG_LNG, lng);
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //init view
+
+        if (getArguments() != null) {
+            latitude = getArguments().getDouble(ARG_LAT, 0);
+            longitude = getArguments().getDouble(ARG_LNG, 0);
+        }
+
         View view = inflater.inflate(R.layout.fragment_maps,container,false);
 
-        //init map fragmant
         SupportMapFragment supportMapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.google_maps);
 
-        //async maps
         supportMapFragment.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(@NonNull GoogleMap googleMap) {
-                //when the map is loaded
+                LatLng location = new LatLng(latitude, longitude);
+                googleMap.addMarker(new MarkerOptions().position(location).title("Alert Location"));
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 10));
                 googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
                     @Override
                     public void onMapClick(@NonNull LatLng latLng) {
-                        //when clicked on map
-                        //init marker options
                         MarkerOptions markerOptions = new MarkerOptions();
-                        //set position of the marker
                         markerOptions.position(latLng);
-                        //set title for the marker
                         markerOptions.title(latLng.latitude+ " : "+latLng.longitude);
-                        //remove all marker
                         googleMap.clear();
-                        //animating the zoom marker
                         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
                                 latLng,10
                         ));
-                        //Add marker on the map
                         googleMap.addMarker((markerOptions));
                     }
                 });

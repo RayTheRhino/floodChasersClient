@@ -44,10 +44,13 @@ public class AlertsAdapter extends RecyclerView.Adapter<AlertsAdapter.ViewHolder
         holder.alert_headline_Tv.setText(currentAlert.getHeadline());
         holder.alert_description_Tv.setText(currentAlert.getDescription());
         holder.alert_area_Tv.setText(currentAlert.getAreas());
+        holder.alert_severity_Tv.setText(currentAlert.getSeverity());
         holder.alert_time_created_Tv.setText(currentAlert.getTimeCreated().toString());
-         /* this is an on click that can move you to another activity */
+
         holder.cardView.setOnClickListener(v -> {
             Intent intent = new Intent(mContext, MapActivity.class);
+            intent.putExtra("latitude", currentAlert.getLat());
+            intent.putExtra("longitude", currentAlert.getLang());
             mContext.startActivity(intent);
         });
     }

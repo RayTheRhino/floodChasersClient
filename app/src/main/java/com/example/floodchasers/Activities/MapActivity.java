@@ -23,7 +23,12 @@ public class MapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_map);
         findViews();
         barListeners();
-        Fragment fragment = new MapsFragment();
+
+        Intent intent = getIntent();
+        double latitude = intent.getDoubleExtra("latitude", 0);
+        double longitude = intent.getDoubleExtra("longitude", 0);
+
+        Fragment fragment = MapsFragment.newInstance(latitude, longitude);
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment).commit();
     }
 
