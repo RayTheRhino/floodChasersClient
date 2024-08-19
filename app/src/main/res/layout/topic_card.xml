@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:elevation="10dp"
-    app:cardBackgroundColor="#F3E6E3"
     app:cardUseCompatPadding="true"
     app:contentPadding="5dp">
 
@@ -15,9 +14,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
+        android:orientation="horizontal"
+        android:padding="4dp"
         android:background="@drawable/edit_text"
-        android:backgroundTint="#F0EBE3"
-        android:orientation="horizontal">
+        android:backgroundTint="#F0EBE3">
 
         <ImageView
             android:id="@+id/forum_image_view"

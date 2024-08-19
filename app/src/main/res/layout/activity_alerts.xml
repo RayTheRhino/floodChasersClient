@@ -90,8 +90,7 @@
             android:layout_weight="1"
             android:text="Forum"
             android:textAlignment="center"
-            android:textSize="16sp"
-            android:textStyle="bold"></com.google.android.material.textview.MaterialTextView>
+            android:textSize="16sp"></com.google.android.material.textview.MaterialTextView>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/alerts"
@@ -99,6 +98,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Alerts"
+            android:textSize="16sp"
+            android:textStyle="bold"
             android:textColor="@color/primary_color"
             android:textAlignment="center"></com.google.android.material.textview.MaterialTextView>
 
